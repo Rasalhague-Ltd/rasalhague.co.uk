@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rasalhague</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #162F42;
+      --heading: #E8C98A;
+      --body: #DBC17F;
+      --label: #E8A547;
+      --cta-bg: #E8A547;
+      --cta-text: #0E1B2C;
+      --card-bg: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.07);
+      --grad: linear-gradient(135deg, #3D1F0D 0%, #1A3320 50%, #0D2535 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg);
+      color: var(--body);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--label);
+      opacity: 0.85;
+    }
+    h1, h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--heading);
+      line-height: 1.1;
+    }
+    #hero { background: var(--bg); padding: 120px 0 80px; }
+    #hero .caption {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--label);
+      opacity: 0.6;
+      margin-bottom: 32px;
+    }
+    #hero h1 { font-size: clamp(48px, 6vw, 80px); max-width: 780px; margin-bottom: 20px; }
+    #hero .sub {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 32px);
+      color: var(--heading);
+      opacity: 0.7;
+      margin-bottom: 48px;
+    }
+    .mc-form { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .mc-form input[type="email"] {
+      flex: 1 1 280px;
+      max-width: 380px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 40px;
+      padding: 16px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--heading);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .mc-form input[type="email"]::placeholder { color: rgba(219,193,127,0.45); }
+    .mc-form input[type="email"]:focus { border-color: var(--label); }
+    .mc-form button {
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      border: none;
+      border-radius: 40px;
+      padding: 16px 32px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .mc-form button:hover { opacity: 0.85; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 72px;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .stat-card { padding: 36px 40px; border-right: 1px solid var(--card-border); }
+    .stat-card:last-child { border-right: none; }
+    .stat-card .stat-num {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(36px, 4vw, 52px);
+      color: var(--heading);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .stat-card .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--label);
+      opacity: 0.8;
+    }
+    .section-wrap { padding: 48px 0; }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+    }
+    .section-left { padding-top: 4px; }
+    .section-right h2 { font-size: clamp(32px, 4vw, 52px); margin-bottom: 28px; }
+    .section-right p { color: var(--body); margin-bottom: 20px; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .num-list { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 20px; }
+    .num-list li { display: flex; gap: 24px; align-items: flex-start; }
+    .num-list li .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--label);
+      opacity: 0.6;
+      padding-top: 3px;
+      min-width: 24px;
+    }
+    .num-list li .text { color: var(--body); line-height: 1.55; }
+    .quote-box {
+      background: var(--grad);
+      border-radius: 12px;
+      padding: 40px 48px;
+      margin-top: 40px;
+    }
+    .quote-box p {
+      color: rgba(232,201,138,0.9);
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.5;
+      margin-bottom: 0 !important;
+    }
+    .section-cta-wrap { padding: 48px 0 80px; }
+    .section-cta {
+      background: var(--grad);
+      border-radius: 16px;
+      padding: 80px 64px;
+      text-align: center;
+    }
+    .section-cta .label { display: block; margin-bottom: 24px; }
+    .section-cta h2 { font-size: clamp(36px, 5vw, 64px); margin-bottom: 28px; }
+    .section-cta p { max-width: 640px; margin: 0 auto 48px; color: rgba(219,193,127,0.85); }
+    .section-cta .mc-form { justify-content: center; }
+    .section-cta .mc-form input[type="email"] {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+    footer { padding: 48px 0 64px; border-top: 1px solid var(--card-border); }
+    .footer-wordmark {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 36px;
+      color: var(--heading);
+      margin-bottom: 16px;
+    }
+    .footer-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--label);
+      opacity: 0.5;
+      line-height: 2;
+    }
+    @media (max-width: 900px) {
+      .container { padding: 0 24px; }
+      .section-card { grid-template-columns: 1fr; padding: 40px 32px; gap: 24px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .stat-card { border-right: none; border-bottom: 1px solid var(--card-border); }
+      .stat-card:last-child { border-bottom: none; }
+      .section-cta { padding: 56px 32px; }
+    }
+    @media (max-width: 600px) {
+      #hero { padding: 80px 0 60px; }
+      .mc-form input[type="email"] { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <section id="hero">
+    <div class="container">
+      <p class="caption">Rasalhague &middot; Est. 2026</p>
+      <h1>650,000 UK HMOs. Zero standardised operations.</h1>
+      <p class="sub">That changes now.</p>
+      <form action="https://rasalhague.us17.list-manage.com/subscribe/post?u=2fff9574227f866a9b6a51aea&id=29de4e7b8c&f_id=00c6eae3f0" method="POST" class="mc-form" target="_blank" novalidate>
+        <input type="email" name="EMAIL" placeholder="Your email" required />
+        <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_2fff9574227f866a9b6a51aea_29de4e7b8c" tabindex="-1" value="" /></div>
+        <button type="submit">Be the first to know &rarr;</button>
+      </form>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num">650,000</div><div class="stat-label">Licensed UK HMOs</div></div>
+        <div class="stat-card"><div class="stat-num">&pound;78BN</div><div class="stat-label">Sector Value</div></div>
+        <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Landlords Open to Adoption</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">The Problem</span></div>
+    <div class="section-right">
+      <h2>What&rsquo;s actually happening</h2>
+      <p>A tenant reports a leak. An informal message. It gets lost &mdash; the landlord wasn&rsquo;t bothered. The next day, water starts leaking from the power plugs. Not a story. A true incident.</p>
+      <p>This is how UK shared housing runs. A 650,000-property sector, worth &pound;78 billion, managed on chat threads, unanswered messages, and tenants chasing into silence.</p>
+      <p>I know it very well. Because I am living inside one.</p>
+    </div>
+  </div></div></div>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">Lived Experience</span></div>
+    <div class="section-right">
+      <h2>Four tenancies. The same failure, every time.</h2>
+      <p>Four shared properties in Newcastle. Stays with friends in Manchester and London. Across agency-managed, private, and portfolio landlords. The pattern was identical:</p>
+      <ul class="num-list">
+        <li><span class="num">01</span><span class="text">Mould blamed on tenants and cats.</span></li>
+        <li><span class="num">02</span><span class="text">A leaking sewer no one repaired.</span></li>
+        <li><span class="num">03</span><span class="text">&pound;2,000 lost to faulty heating equipment &mdash; still affecting my credit score today.</span></li>
+        <li><span class="num">04</span><span class="text">An attempted break-in to a tenant&rsquo;s room. Door forced.</span></li>
+        <li><span class="num">05</span><span class="text">A heating system that smelled like rotten eggs. Fire service called.</span></li>
+        <li><span class="num">06</span><span class="text">A broken fence fixed with the broken pieces, six times over.</span></li>
+      </ul>
+      <div class="quote-box">
+        <p>The buildings weren&rsquo;t broken. The operating systems were. No reporting. No triage. No timelines. No proof of completion. No consequence for delay.</p>
+      </div>
+    </div>
+  </div></div></div>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">The Shift</span></div>
+    <div class="section-right">
+      <h2>Ships don&rsquo;t run on goodwill. Neither should homes.</h2>
+      <p>Before I built Rasalhague, I served in the merchant navy as a Navigating Officer on oil tankers.</p>
+      <p>Ships don&rsquo;t stay safe because crews try harder. They stay safe because the systems around them are deterministic, audited, and impossible to drift from. Every hazard classified. Every classification carries a defined response time. Every action leaves a record.</p>
+      <p>The same discipline that runs an oil tanker can run an HMO. That&rsquo;s what Rasalhague is.</p>
+    </div>
+  </div></div></div>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">What It Is</span></div>
+    <div class="section-right">
+      <h2>The operational governance layer for UK shared housing.</h2>
+      <p>Tenants report through structured inputs.</p>
+      <p>Every issue is classified deterministically &mdash; not by judgement, not by mood. Priority is assigned by the system. Response timeframes are defined, not negotiated. Closure requires evidence.</p>
+      <p>The works log is append-only. It cannot be edited.</p>
+      <p>No WhatsApp. No &ldquo;we&rsquo;ll get to it.&rdquo; No mould blamed on the cats.</p>
+    </div>
+  </div></div></div>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">Built On Evidence</span></div>
+    <div class="section-right">
+      <h2>This isn&rsquo;t an opinion. It&rsquo;s a structural fix.</h2>
+      <p>The case for Rasalhague is independently validated by peer-reviewed academic research &mdash; tenant experience and landlord operation &mdash; from two independent UK university studies.</p>
+      <p>The platform is built against current UK housing health and safety standards, and aligned with the regulatory direction of UK private rented sector reform.</p>
+      <p>When institutional accountability exists &mdash; student accommodation, regulated landlord housing &mdash; the operational picture improves.</p>
+      <p>For everyone else, there is no system. Until now.</p>
+    </div>
+  </div></div></div>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">Who It&rsquo;s For</span></div>
+    <div class="section-right">
+      <h2>Built for the operators who want to do this properly.</h2>
+      <ul class="num-list">
+        <li><span class="num">01</span><span class="text">HMO landlords &mdash; from a three-bed share to a thirty-room portfolio</span></li>
+        <li><span class="num">02</span><span class="text">Portfolio managers handling multiple properties</span></li>
+        <li><span class="num">03</span><span class="text">Estate and management companies running shared living at scale</span></li>
+      </ul>
+      <p>UK-only at launch. HMO-only at this stage. If you run shared housing and you want a system, not a chat thread, Rasalhague is for you.</p>
+    </div>
+  </div></div></div>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">Founder</span></div>
+    <div class="section-right">
+      <h2>Why I&rsquo;m building this</h2>
+      <p>I&rsquo;m Hitesh Siwach.</p>
+      <p>Before Rasalhague, I served as a Navigating Officer on oil tankers, working under the operational safety frameworks that shaped how I think about high-stakes systems.</p>
+      <p>I came ashore. I lived inside the operational failure mode of UK shared housing for over two years.</p>
+      <p>Rasalhague is what would have changed every one of those tenancies.</p>
+    </div>
+  </div></div></div>
+  <div class="section-cta-wrap"><div class="container">
+    <div class="section-cta">
+      <span class="label">Be The First To Know</span>
+      <h2>Be the first to know.</h2>
+      <p>The UK shared housing sector has been operating without a system for decades. We&rsquo;re building it. If you&rsquo;re an HMO landlord, an operator, a portfolio manager, or just someone who wants to see this fixed &mdash; leave your email below. You&rsquo;ll hear from us when we open.</p>
+      <form action="https://rasalhague.us17.list-manage.com/subscribe/post?u=2fff9574227f866a9b6a51aea&id=29de4e7b8c&f_id=00c6eae3f0" method="POST" class="mc-form" target="_blank" novalidate>
+        <input type="email" name="EMAIL" placeholder="Your email" required />
+        <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_2fff9574227f866a9b6a51aea_29de4e7b8c" tabindex="-1" value="" /></div>
+        <button type="submit">Be the first to know &rarr;</button>
+      </form>
+    </div>
+  </div></div>
+  <footer>
+    <div class="container">
+      <div class="footer-wordmark">Rasalhague</div>
+      <div class="footer-meta">
+        Rasalhague Ltd &middot; Companies House No. 17186277<br />
+        Newcastle upon Tyne, United Kingdom<br />
+        hello@rasalhague.co.uk
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
