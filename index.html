@@ -21,8 +21,8 @@
       --card-border: rgba(85,96,110,0.12);
       --grad: #FAF8F2;
     }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { overflow-x: hidden;
+    html { scroll-behavior: smooth; overflow-x: hidden; overscroll-behavior: none; }
+    body { overflow-x: hidden; overscroll-behavior: none;
       background-color: var(--bg);
       color: var(--body);
       font-family: 'DM Sans', sans-serif;
@@ -184,7 +184,7 @@
     .section-cta {
       background: var(--grad);
       border-radius: 16px;
-      padding: 48px 44px; max-width: 720px; margin-left: auto; margin-right: auto;
+      padding: 56px 48px; max-width: 720px; margin-left: auto; margin-right: auto;
       text-align: center;
     }
     .section-cta .label { display: block; margin-bottom: 24px; }
@@ -266,6 +266,7 @@
 .section-right details.faq-item summary::after{content:"+";font-size:1.6rem;line-height:1;color:#5C94CC;flex-shrink:0;}
 .section-right details.faq-item[open] summary::after{content:"\2212";}
 .section-right .faq-answer{padding:0 0 1.5rem;max-width:60ch;font-family:'DM Sans',sans-serif;font-weight:300;font-size:1.05rem;line-height:1.6;color:#55606E;}
+.section-cta .form-consent{margin-top:1.2rem;}
 </style>
 </head>
 <body>
