@@ -10,15 +10,16 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #162F42;
-      --heading: #E8C98A;
-      --body: #DBC17F;
-      --label: #E8A547;
-      --cta-bg: #E8A547;
-      --cta-text: #0E1B2C;
-      --card-bg: rgba(255,255,255,0.04);
-      --card-border: rgba(255,255,255,0.07);
-      --grad: linear-gradient(135deg, #3D1F0D 0%, #1A3320 50%, #0D2535 100%);
+      --bg: #FAF8F2;
+      --heading: #55606E;
+      --body: #55606E;
+      --label: #6B7685;
+      --accent: #5C94CC;
+      --cta-bg: #5189C2;
+      --cta-text: #FAF8F2;
+      --card-bg: #FAF8F2;
+      --card-border: rgba(85,96,110,0.12);
+      --grad: #FAF8F2;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -223,7 +224,34 @@
       #hero { padding: 80px 0 60px; }
       .mc-form input[type="email"] { max-width: 100%; }
     }
-  </style>
+  
+    /* === Rasalhague light-mode colour scheme (override layer) === */
+    .stat-num { color: #5C94CC; }
+    .num { color: #5C94CC; }
+    a { color: #5C94CC; }
+    .stat-card a, .section-cta a { color: inherit; }
+    input[type="email"] {
+      border:1px solid #B9BCB4;
+      background:rgba(255,255,255,.45);
+      color:#3A4250;
+    }
+    input[type="email"]::placeholder { color:#7C8488; }
+    button[type="submit"] { background:#5189C2; color:#FAF8F2; }
+    .quote-box, .section-cta {
+      background:
+      radial-gradient(circle at 21% 28%, rgba(86,142,128,.42) 0, rgba(86,142,128,.30) 5px, transparent 58px),
+      radial-gradient(circle at 73% 62%, rgba(104,156,146,.38) 0, transparent 52px),
+      radial-gradient(circle at 47% 82%, rgba(92,138,126,.34) 0, transparent 42px),
+      radial-gradient(circle at 88% 22%, rgba(98,150,140,.30) 0, transparent 46px),
+      radial-gradient(circle at 9% 70%,  rgba(110,160,150,.30) 0, transparent 40px),
+      radial-gradient(circle at 60% 12%, rgba(96,144,132,.26) 0, transparent 38px),
+      #E1DFD7;
+    box-shadow: inset 0 0 0 1px rgba(90,98,90,.18), inset 0 0 50px rgba(80,90,82,.16);
+    border-radius:18px;
+    }
+    .quote-box, .quote-box *, .section-cta, .section-cta * { color:#55606E; }
+    .section-cta button[type="submit"], .quote-box button[type="submit"] { background:#5189C2; color:#FAF8F2; }
+</style>
 </head>
 <body>
   <section id="hero">
