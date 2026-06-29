@@ -57,6 +57,18 @@
       opacity: 0.6;
       margin-bottom: 32px;
     }
+    .form-consent {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: none;
+      letter-spacing: normal;
+      color: var(--label);
+      opacity: 0.6;
+      line-height: 1.6;
+      max-width: 32rem;
+      margin-top: 14px;
+    }
+    .form-consent a { color: inherit; text-decoration: underline; }
     #hero h1 { font-size: clamp(48px, 6vw, 80px); max-width: 780px; margin-bottom: 20px; }
     #hero .sub {
       font-family: 'Instrument Serif', serif;
@@ -217,17 +229,18 @@
   <section id="hero">
     <div class="container">
       <p class="caption">Rasalhague &middot; Est. 2026</p>
-      <h1>650,000 UK HMOs. Zero standardised operations.</h1>
-      <p class="sub">That changes now.</p>
+      <h1>650,000 UK HMOs. No one is accountable when it fails.</h1>
+      <p class="sub"><em>Rasalhague changes that.</em></p>
       <form action="https://rasalhague.us17.list-manage.com/subscribe/post?u=2fff9574227f866a9b6a51aea&id=29de4e7b8c&f_id=00c6eae3f0" method="POST" class="mc-form" target="_blank" novalidate>
         <input type="email" name="EMAIL" placeholder="Your email" required />
         <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_2fff9574227f866a9b6a51aea_29de4e7b8c" tabindex="-1" value="" /></div>
         <button type="submit">Be the first to know &rarr;</button>
       </form>
+        <p class="form-consent">We&rsquo;ll only use your email to tell you when Rasalhague opens. No spam, unsubscribe anytime. See our <a href="/privacy">Privacy Policy</a>.</p>
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-num">650,000</div><div class="stat-label">Licensed UK HMOs</div></div>
-        <div class="stat-card"><div class="stat-num">&pound;78BN</div><div class="stat-label">Sector Value</div></div>
-                <div class="stat-card"><div class="stat-num">92.5%</div><div class="stat-label">Run on chat threads, no audit trail</div></div>
+        <div class="stat-card"><div class="stat-num">94.7%</div><div class="stat-label">Run issues over WhatsApp &amp; chat</div></div>
+                <div class="stat-card"><div class="stat-num">84.2%</div><div class="stat-label">No audit trail of repairs</div></div>
       </div>
     </div>
   </section>
@@ -238,7 +251,7 @@
           <p>A small problem can escalate quickly. A tenant sends a message about a leak: a photo and one line of text, delivered the way most issues are reported now. No one replies. The message slips up the thread and out of sight.</p>
               <p>By the next evening, the water has reached the wiring and is running from the power sockets. Six people are still living in the house, still paying rent, and still waiting for help.</p>
               <p>This is not an extreme example. It is an ordinary one &mdash; and I know because I lived inside it.</p>
-              <p>This is how UK shared housing often operates: a 650,000-property sector worth &pound;78 billion, held together by chat threads, unanswered messages, and tenants chasing into silence.</p>
+              <p>This is how UK shared housing often operates: a 650,000-property sector held together by chat threads, unanswered messages, and tenants chasing into silence.</p>
     </div>
   </div></div></div>
   <div class="section-wrap"><div class="container"><div class="section-card">
@@ -271,11 +284,22 @@
   <div class="section-wrap"><div class="container"><div class="section-card">
     <div class="section-left"><span class="label">What It Is</span></div>
     <div class="section-right">
-      <h2>The operational governance layer for UK shared housing.</h2>
-      <p>Tenants report through structured inputs.</p>
-      <p>Every issue is classified deterministically &mdash; not by judgement, not by mood. Priority is assigned by the system. Response timeframes are defined, not negotiated. Closure requires evidence.</p>
-      <p>The works log is append-only. It cannot be edited.</p>
-      <p>No WhatsApp. No &ldquo;we&rsquo;ll get to it.&rdquo; No mould blamed on the cats.</p>
+      <h2>Not an admin tool. An accountability system.</h2>
+      <p>Rasalhague is the operational governance layer for UK shared housing &mdash; built on one idea: every issue is owned, timed, and proven.</p>
+      <p>Landlord and tenant are both first-class in the same loop. The tenant isn&rsquo;t a name on a file. They report, watch the issue get logged and prioritised, and see it closed with proof.</p>
+      <p>Issues are raised through structured reports, ranked by the system rather than by mood, and given a defined response window. Closure requires evidence. The works log is permanent and cannot be edited.</p>
+      <p>No chat threads. No <em>&ldquo;we&rsquo;ll get to it.&rdquo;</em> No mould blamed on the cats.</p>
+    </div>
+  </div></div></div>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">How It Works</span></div>
+    <div class="section-right">
+      <h2>Three steps. No chat threads.</h2>
+      <ul class="num-list">
+        <li><span class="num">01</span><span class="text"><strong>Report.</strong> Tenants raise issues through structured forms &mdash; not messages that get lost.</span></li>
+        <li><span class="num">02</span><span class="text"><strong>Prioritise.</strong> Every issue is logged, ranked, and given a defined response timeframe. The system decides &mdash; not mood, not memory.</span></li>
+        <li><span class="num">03</span><span class="text"><strong>Resolve &amp; prove.</strong> Closure requires evidence. The works log is permanent and cannot be edited.</span></li>
+      </ul>
     </div>
   </div></div></div>
   <div class="section-wrap"><div class="container"><div class="section-card">
@@ -310,6 +334,17 @@
       <p>Rasalhague is what would have changed every one of those tenancies.</p>
     </div>
   </div></div></div>
+  <div class="section-wrap"><div class="container"><div class="section-card">
+    <div class="section-left"><span class="label">FAQ</span></div>
+    <div class="section-right">
+      <h2>Questions</h2>
+      <p><strong>When does it launch?</strong><br />Rasalhague is in active development, UK HMOs first. Leave your email and you&rsquo;ll hear from us when we open.</p>
+      <p><strong>Who is it for?</strong><br />HMO landlords, portfolio managers, and operators running shared housing in the UK &mdash; from a three-bed share to a thirty-room portfolio.</p>
+      <p><strong>How is this different from property management software?</strong><br />Most tools log a request and stop there. Rasalhague is an accountability layer: both landlord and tenant see the same record, every issue carries a response timeframe, and closure has to be proven, not claimed.</p>
+      <p><strong>What will it cost?</strong><br />Simple, predictable per-room pricing. Full details at launch.</p>
+      <p><strong>How is my data handled?</strong><br />We take data protection seriously and operate in line with UK GDPR. A full privacy policy is published before launch.</p>
+    </div>
+  </div></div></div>
   <div class="section-cta-wrap"><div class="container">
     <div class="section-cta">
       <span class="label">Be The First To Know</span>
@@ -320,6 +355,7 @@
         <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_2fff9574227f866a9b6a51aea_29de4e7b8c" tabindex="-1" value="" /></div>
         <button type="submit">Be the first to know &rarr;</button>
       </form>
+        <p class="form-consent">We&rsquo;ll only use your email to tell you when Rasalhague opens. No spam, unsubscribe anytime. See our <a href="/privacy">Privacy Policy</a>.</p>
     </div>
   </div></div>
   <footer>
