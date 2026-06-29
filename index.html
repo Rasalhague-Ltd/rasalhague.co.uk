@@ -259,6 +259,13 @@
     }
     .quote-box, .quote-box p, .quote-box *, .section-cta, .section-cta p, .section-cta * { color:#55606E; }
     .section-cta .mc-form button[type="submit"], .quote-box button[type="submit"] { background:#5189C2; color:#FAF8F2; }
+
+.section-right details.faq-item{border-bottom:1px solid rgba(85,96,110,0.18);}
+.section-right details.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.4rem 0;font-family:'DM Sans',sans-serif;font-size:1.15rem;color:#55606E;}
+.section-right details.faq-item summary::-webkit-details-marker{display:none;}
+.section-right details.faq-item summary::after{content:"+";font-size:1.6rem;line-height:1;color:#5C94CC;flex-shrink:0;}
+.section-right details.faq-item[open] summary::after{content:"\2212";}
+.section-right .faq-answer{padding:0 0 1.5rem;max-width:60ch;font-family:'DM Sans',sans-serif;font-weight:300;font-size:1.05rem;line-height:1.6;color:#55606E;}
 </style>
 </head>
 <body>
@@ -376,11 +383,11 @@
     <div class="section-left"><span class="label">FAQ</span></div>
     <div class="section-right">
       <h2>Questions</h2>
-      <p><strong>When does it launch?</strong><br />Rasalhague is in active development, UK HMOs first. Leave your email and you&rsquo;ll hear from us when we open.</p>
-      <p><strong>Who is it for?</strong><br />HMO landlords, portfolio managers, and operators running shared housing in the UK &mdash; from a three-bed share to a thirty-room portfolio.</p>
-      <p><strong>How is this different from property management software?</strong><br />Most tools log a request and stop there. Rasalhague is an accountability layer: both landlord and tenant see the same record, every issue carries a response timeframe, and closure has to be proven, not claimed.</p>
-      <p><strong>What will it cost?</strong><br />Simple, predictable per-room pricing. Full details at launch.</p>
-      <p><strong>How is my data handled?</strong><br />We take data protection seriously and operate in line with UK GDPR. A full privacy policy is published before launch.</p>
+      <details class="faq-item"><summary>When does it launch?</summary><div class="faq-answer">Rasalhague is in active development, UK HMOs first. Leave your email and you&rsquo;ll hear from us when we open.</div></details>
+      <details class="faq-item"><summary>Who is it for?</summary><div class="faq-answer">HMO landlords, portfolio managers, and operators running shared housing in the UK &mdash; from a three-bed share to a thirty-room portfolio.</div></details>
+      <details class="faq-item"><summary>How is this different from property management software?</summary><div class="faq-answer">Most tools log a request and stop there. Rasalhague is an accountability layer: both landlord and tenant see the same record, every issue carries a response timeframe, and closure has to be proven, not claimed.</div></details>
+      <details class="faq-item"><summary>What will it cost?</summary><div class="faq-answer">Simple, predictable per-room pricing. Full details at launch.</div></details>
+      <details class="faq-item"><summary>How is my data handled?</summary><div class="faq-answer">We take data protection seriously and operate in line with UK GDPR. A full privacy policy is published before launch.</div></details>
     </div>
   </div></div></div>
   <div class="section-cta-wrap"><div class="container">
