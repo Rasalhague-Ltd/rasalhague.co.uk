@@ -226,17 +226,17 @@
     }
   
     /* === Rasalhague light-mode colour scheme (override layer) === */
-    .stat-num { color: #5C94CC; }
-    .num { color: #5C94CC; }
-    a { color: #5C94CC; }
+    .stat-card .stat-num { color: #5C94CC; }
+    .num-list li .num { color: #5C94CC; }
+    a, .section-right a, p a { color: #5C94CC; }
     .stat-card a, .section-cta a { color: inherit; }
-    input[type="email"] {
+    .mc-form input[type="email"], input[type="email"] {
       border:1px solid #B9BCB4;
       background:rgba(255,255,255,.45);
       color:#3A4250;
     }
-    input[type="email"]::placeholder { color:#7C8488; }
-    button[type="submit"] { background:#5189C2; color:#FAF8F2; }
+    .mc-form input[type="email"]::placeholder, input[type="email"]::placeholder { color:#7C8488; }
+    .mc-form button[type="submit"], button[type="submit"] { background:#5189C2; color:#FAF8F2; }
     .quote-box, .section-cta {
       background:
       radial-gradient(circle at 21% 28%, rgba(86,142,128,.42) 0, rgba(86,142,128,.30) 5px, transparent 58px),
@@ -249,8 +249,8 @@
     box-shadow: inset 0 0 0 1px rgba(90,98,90,.18), inset 0 0 50px rgba(80,90,82,.16);
     border-radius:18px;
     }
-    .quote-box, .quote-box *, .section-cta, .section-cta * { color:#55606E; }
-    .section-cta button[type="submit"], .quote-box button[type="submit"] { background:#5189C2; color:#FAF8F2; }
+    .quote-box, .quote-box p, .quote-box *, .section-cta, .section-cta p, .section-cta * { color:#55606E; }
+    .section-cta .mc-form button[type="submit"], .quote-box button[type="submit"] { background:#5189C2; color:#FAF8F2; }
 </style>
 </head>
 <body>
