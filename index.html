@@ -1,420 +1,971 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Rasalhague</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
   <style>
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
+
       --bg: #FAF8F2;
+
       --heading: #55606E;
+
       --body: #55606E;
-      --label: #6B7685;
+
+      --label: #4F5763;
+
       --accent: #5C94CC;
+
       --cta-bg: #5189C2;
+
       --cta-text: #FAF8F2;
+
       --card-bg: #FAF8F2;
+
       --card-border: rgba(85,96,110,0.12);
+
       --grad: #FAF8F2;
+
     }
+
     html { scroll-behavior: smooth; }
+
     body { overflow-x: clip;
+
       background-color: var(--bg);
+
       color: var(--body);
+
       font-family: 'DM Sans', sans-serif;
+
       font-weight: 300;
+
       font-size: 18px;
+
       line-height: 1.55;
+
     }
+
     .container { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
     .label {
+
       font-family: 'JetBrains Mono', monospace;
+
       font-size: 16px;
+
       font-weight: 400;
+
       text-transform: uppercase;
+
       letter-spacing: 0.08em;
+
       color: var(--label);
-      opacity: 0.85;
+
+      opacity: 0.95;
+
     }
+
     h1, h2 {
+
       font-family: 'Instrument Serif', serif;
+
       font-style: italic;
+
       font-weight: 400;
+
       color: var(--heading);
+
       line-height: 1.1;
+
     }
-    #hero { background: var(--bg); padding: 72px 0 64px; }
+
+    #hero { background: var(--bg); padding: 72px 0 32px; }
+
     #hero .caption {
+
       font-family: 'JetBrains Mono', monospace;
+
       font-size: 13px;
+
       font-weight: 400;
+
       text-transform: uppercase;
+
       letter-spacing: 0.12em;
+
       color: var(--label);
-      opacity: 0.6;
+
+      opacity: 0.85;
+
       margin-bottom: 32px;
+
     }
+
     .form-consent {
+
       font-family: 'JetBrains Mono', monospace;
+
       font-size: 12px;
+
       text-transform: none;
+
       letter-spacing: normal;
+
       color: var(--label);
-      opacity: 0.6;
-      line-height: 1.6;
-      max-width: 32rem;
-      margin-top: 14px;
-    }
-    .form-consent a { color: inherit; text-decoration: underline; }
-    #hero h1 { font-size: clamp(48px, 6vw, 80px); max-width: 780px; margin-bottom: 20px; }
-    #hero .sub {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-size: clamp(22px, 3vw, 32px);
-      color: var(--heading);
-      opacity: 0.7;
-      margin-bottom: 48px;
-    }
-    .mc-form { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    .mc-form input[type="email"] {
-      flex: 1 1 280px;
-      max-width: 380px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 40px;
-      padding: 16px 24px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--heading);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .mc-form input[type="email"]::placeholder { color: rgba(219,193,127,0.45); }
-    .mc-form input[type="email"]:focus { border-color: var(--label); }
-    .mc-form button {
-      background: var(--cta-bg);
-      color: var(--cta-text);
-      border: none;
-      border-radius: 40px;
-      padding: 16px 32px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: opacity 0.2s;
-    }
-    .mc-form button:hover { opacity: 0.85; }
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      margin-top: 72px;
-      border: none;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .stat-card { padding: 36px 40px; border-right: none; }
-    .stat-card:last-child { border-right: none; }
-    .stat-card .stat-num {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(36px, 4vw, 52px);
-      color: var(--heading);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-    .stat-card .stat-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--label);
+
       opacity: 0.8;
+
+      line-height: 1.6;
+
+      max-width: 32rem;
+
+      margin-top: 14px;
+
     }
-    .section-wrap { padding: 36px 0; }
-    .section-card {
-      background: var(--card-bg);
-      border: none;
-      border-radius: 16px;
-      padding: 64px;
-      display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 48px;
+
+    .form-consent a { color: inherit; text-decoration: underline; }
+
+    .form-msg {
+
+      font-family: 'DM Sans', sans-serif;
+
+      font-size: 15px;
+
+      font-weight: 400;
+
+      color: #3E6A92;
+
+      margin-top: 14px;
+
+      max-width: 32rem;
+
     }
-    .section-left { padding-top: 4px; }
-    .section-right h2 { font-size: clamp(32px, 4vw, 52px); margin-bottom: 28px; }
-    .section-right p { color: var(--body); margin-bottom: 20px; }
-    .section-right p:last-child { margin-bottom: 0; }
-    .num-list { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 20px; }
-    .num-list li { display: flex; gap: 24px; align-items: flex-start; }
-    .num-list li .num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--label);
-      opacity: 0.6;
-      padding-top: 3px;
-      min-width: 24px;
-    }
-    .num-list li .text { color: var(--body); line-height: 1.55; }
-    .quote-box {
-      background: var(--grad);
-      border-radius: 12px;
-      padding: 40px 48px;
-      margin-top: 40px;
-    }
-    .quote-box p {
-      color: rgba(232,201,138,0.9);
+
+    .form-msg.is-error { color: #B23A3A; }
+
+    #hero h1 { font-size: clamp(48px, 6vw, 80px); max-width: 780px; margin-bottom: 20px; }
+
+    #hero .sub {
+
       font-family: 'Instrument Serif', serif;
+
       font-style: italic;
-      font-size: 20px;
-      line-height: 1.5;
-      margin-bottom: 0 !important;
-    }
-    .section-cta-wrap { padding: 36px 0 64px; }
-    .section-cta {
-      background: var(--grad);
-      border-radius: 16px;
-      padding: 56px 48px; max-width: 720px; margin-left: auto; margin-right: auto;
-      text-align: center;
-    }
-    .section-cta .label { display: block; margin-bottom: 24px; }
-    .section-cta h2 { font-size: clamp(36px, 5vw, 64px); margin-bottom: 28px; }
-    .section-cta p { max-width: 640px; margin: 0 auto 48px; color: rgba(219,193,127,0.85); }
-    .section-cta .mc-form { justify-content: center; }
-    .section-cta .mc-form input[type="email"] {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.2);
-    }
-    footer { padding: 72px 0 64px; border-top: 1px solid var(--card-border); }
-    .footer-wordmark {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-size: 36px;
+
+      font-size: clamp(22px, 3vw, 32px);
+
       color: var(--heading);
-      margin-bottom: 16px;
+
+      opacity: 0.7;
+
+      margin-bottom: 48px;
+
     }
-    .footer-meta {
+
+    .mc-form { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+    .mc-form input[type="email"] {
+
+      flex: 1 1 280px;
+
+      max-width: 380px;
+
+      background: rgba(255,255,255,0.07);
+
+      border: 1px solid rgba(255,255,255,0.15);
+
+      border-radius: 40px;
+
+      padding: 16px 24px;
+
+      font-family: 'DM Sans', sans-serif;
+
+      font-size: 16px;
+
+      font-weight: 300;
+
+      color: var(--heading);
+
+      outline: none;
+
+      transition: border-color 0.2s;
+
+    }
+
+    .mc-form input[type="email"]::placeholder { color: rgba(219,193,127,0.45); }
+
+    .mc-form input[type="email"]:focus { border-color: var(--label); }
+
+    .mc-form button {
+
+      background: var(--cta-bg);
+
+      color: var(--cta-text);
+
+      border: none;
+
+      border-radius: 40px;
+
+      padding: 16px 32px;
+
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+
+      font-size: 13px;
+
+      font-weight: 400;
+
       text-transform: uppercase;
+
       letter-spacing: 0.08em;
+
+      cursor: pointer;
+
+      white-space: nowrap;
+
+      transition: opacity 0.2s;
+
+    }
+
+    .mc-form button:hover { opacity: 0.85; }
+
+    .stat-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 0;
+
+      margin-top: 72px;
+
+      border: none;
+
+      border-radius: 12px;
+
+      overflow: hidden;
+
+    }
+
+    .stat-card { padding: 36px 40px; border-right: none; }
+
+    .stat-card:last-child { border-right: none; }
+
+    .stat-card .stat-num {
+
+      font-family: 'Instrument Serif', serif;
+
+      font-style: italic;
+
+      font-weight: 400;
+
+      font-size: clamp(36px, 4vw, 52px);
+
+      color: var(--heading);
+
+      line-height: 1;
+
+      margin-bottom: 12px;
+
+    }
+
+    .stat-card .stat-label {
+
+      font-family: 'JetBrains Mono', monospace;
+
+      font-size: 12px;
+
+      font-weight: 400;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.1em;
+
       color: var(--label);
-      opacity: 0.5;
-      line-height: 2;
+
+      opacity: 0.95;
+
     }
-    @media (max-width: 900px) {
-      .container { padding: 0 24px; }
-      .section-card { grid-template-columns: 1fr; padding: 40px 32px; gap: 24px; }
-      .stat-grid { grid-template-columns: 1fr; }
-      .stat-card { border-right: none; border-bottom: 1px solid var(--card-border); }
-      .stat-card:last-child { border-bottom: none; }
-      .section-cta { padding: 56px 32px; }
+
+    .section-wrap { padding: 32px 0; }
+
+    .section-card {
+
+      background: var(--card-bg);
+
+      border: none;
+
+      border-radius: 16px;
+
+      padding: 64px;
+
+      display: grid;
+
+      grid-template-columns: 190px 1fr;
+
+      gap: 48px;
+
     }
-    @media (max-width: 600px) {
-      #hero { padding: 80px 0 60px; }
-      .mc-form input[type="email"] { max-width: 100%; }
+
+    .section-left { padding-top: 4px; }
+
+    .section-right h2 { font-size: clamp(32px, 4vw, 52px); margin-bottom: 28px; }
+
+    .section-right p { color: var(--body); margin-bottom: 20px; }
+
+    .section-right p:last-child { margin-bottom: 0; }
+
+    .num-list { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 20px; }
+
+    .num-list li { display: flex; gap: 24px; align-items: flex-start; }
+
+    .num-list li .num {
+
+      font-family: 'JetBrains Mono', monospace;
+
+      font-size: 12px;
+
+      color: var(--label);
+
+      opacity: 0.6;
+
+      padding-top: 3px;
+
+      min-width: 24px;
+
     }
-  
-    /* === Rasalhague light-mode colour scheme (override layer) === */
-    .stat-card .stat-num { color: #5C94CC; }
-    .num-list li .num { color: #5C94CC; }
-    a, .section-right a, p a { color: #5C94CC; }
-    .stat-card a, .section-cta a { color: inherit; }
-    .mc-form input[type="email"], input[type="email"] {
-      background: rgba(255,255,255,0.92);
-      border: 1px solid #AEB2A9;
-      box-shadow: 0 1px 3px rgba(60,66,58,0.08);
-      color: #3A4250;
+
+    .num-list li .text { color: var(--body); line-height: 1.55; }
+
+    .quote-box {
+
+      background: var(--grad);
+
+      border-radius: 12px;
+
+      padding: 40px 48px;
+
+      margin-top: 40px;
+
     }
-    .mc-form input[type="email"]::placeholder, input[type="email"]::placeholder { color:#7C8488; }
+
+    .quote-box p {
+
+      color: rgba(232,201,138,0.9);
+
+      font-family: 'Instrument Serif', serif;
+
+      font-style: italic;
+
+      font-size: 20px;
+
+      line-height: 1.5;
+
+      margin-bottom: 0 !important;
+
+    }
+
+    .section-cta-wrap { padding: 36px 0 64px; }
+
+    .section-cta {
+
+      background: var(--grad);
+
+      border-radius: 16px;
+
+      padding: 56px 48px; max-width: 720px; margin-left: auto; margin-right: auto;
+
+      text-align: center;
+
+    }
+
+    .section-cta .label { display: block; margin-bottom: 24px; }
+
+    .section-cta h2 { font-size: clamp(36px, 5vw, 64px); margin-bottom: 28px; }
+
+    .section-cta p { max-width: 640px; margin: 0 auto 48px; color: rgba(219,193,127,0.85); }
+
+    .section-cta .mc-form { justify-content: center; }
+
     .section-cta .mc-form input[type="email"] {
+
+      background: rgba(255,255,255,0.1);
+
+      border-color: rgba(255,255,255,0.2);
+
+    }
+
+    footer { padding: 72px 0 64px; border-top: 1px solid var(--card-border); }
+
+    .footer-wordmark {
+
+      font-family: 'Instrument Serif', serif;
+
+      font-style: italic;
+
+      font-size: 36px;
+
+      color: var(--heading);
+
+      margin-bottom: 16px;
+
+    }
+
+    .footer-meta {
+
+      font-family: 'JetBrains Mono', monospace;
+
+      font-size: 12px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+      color: var(--label);
+
+      opacity: 0.7;
+
+      line-height: 2;
+
+    }
+
+    @media (max-width: 900px) {
+
+      .container { padding: 0 24px; }
+
+      .section-card { grid-template-columns: 1fr; padding: 40px 32px; gap: 24px; }
+
+      .stat-grid { grid-template-columns: 1fr; }
+
+      .stat-card { border-right: none; border-bottom: 1px solid var(--card-border); }
+
+      .stat-card:last-child { border-bottom: none; }
+
+      .section-cta { padding: 56px 32px; }
+
+    }
+
+    @media (max-width: 600px) {
+
+      #hero { padding: 80px 0 32px; }
+
+      .mc-form input[type="email"] { max-width: 100%; }
+
+    }
+
+    /* === Rasalhague light-mode colour scheme (override layer) === */
+
+    .stat-card .stat-num { color: #5C94CC; }
+
+    .num-list li .num { color: #5C94CC; }
+
+    a, .section-right a, p a { color: #3E6A92; }
+
+    .stat-card a, .section-cta a { color: inherit; }
+
+    .mc-form input[type="email"], input[type="email"] {
+
       background: rgba(255,255,255,0.92);
+
       border: 1px solid #AEB2A9;
+
       box-shadow: 0 1px 3px rgba(60,66,58,0.08);
+
       color: #3A4250;
+
     }
+
+    .mc-form input[type="email"]::placeholder, input[type="email"]::placeholder { color:#7C8488; }
+
+    .section-cta .mc-form input[type="email"] {
+
+      background: rgba(255,255,255,0.92);
+
+      border: 1px solid #AEB2A9;
+
+      box-shadow: 0 1px 3px rgba(60,66,58,0.08);
+
+      color: #3A4250;
+
+    }
+
     .section-cta .mc-form input[type="email"]::placeholder { color:#7C8488; }
+
     .mc-form button[type="submit"], button[type="submit"] { background:#5189C2; color:#FAF8F2; }
+
     .quote-box, .section-cta {
+
       background:
+
       radial-gradient(circle at 21% 28%, rgba(86,142,128,.42) 0, rgba(86,142,128,.30) 5px, transparent 58px),
+
       radial-gradient(circle at 73% 62%, rgba(104,156,146,.38) 0, transparent 52px),
+
       radial-gradient(circle at 47% 82%, rgba(92,138,126,.34) 0, transparent 42px),
+
       radial-gradient(circle at 88% 22%, rgba(98,150,140,.30) 0, transparent 46px),
+
       radial-gradient(circle at 9% 70%,  rgba(110,160,150,.30) 0, transparent 40px),
+
       radial-gradient(circle at 60% 12%, rgba(96,144,132,.26) 0, transparent 38px),
+
       #E1DFD7;
+
     box-shadow: inset 0 0 0 1px rgba(90,98,90,.18), inset 0 0 50px rgba(80,90,82,.16);
+
     border-radius:18px;
+
     }
+
     .quote-box, .quote-box p, .quote-box *, .section-cta, .section-cta p, .section-cta * { color:#55606E; }
+
     .section-cta .mc-form button[type="submit"], .quote-box button[type="submit"] { background:#5189C2; color:#FAF8F2; }
 
 .section-right details.faq-item{border-bottom:1px solid rgba(85,96,110,0.18);}
+
 .section-right details.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.4rem 0;font-family:'DM Sans',sans-serif;font-size:1.15rem;color:#55606E;}
+
 .section-right details.faq-item summary::-webkit-details-marker{display:none;}
-.section-right details.faq-item summary::after{content:"+";font-size:1.6rem;line-height:1;color:#5C94CC;flex-shrink:0;}
+
+.section-right details.faq-item summary::after{content:"+";font-size:1.6rem;line-height:1;color:#3E6A92;flex-shrink:0;}
+
 .section-right details.faq-item[open] summary::after{content:"\2212";}
+
 .section-right .faq-answer{padding:0 0 1.5rem;max-width:60ch;font-family:'DM Sans',sans-serif;font-weight:300;font-size:1.05rem;line-height:1.6;color:#55606E;}
+
 .section-cta .form-consent{margin-top:1.2rem;}
+
+.section-cta .form-msg{margin-top:1.2rem;color:#3E6A92;}
+
+.section-cta .form-msg.is-error{color:#B23A3A;}
+
 </style>
+
 </head>
+
 <body>
+
   <section id="hero">
+
     <div class="container">
+
       <p class="caption">Rasalhague &middot; Est. 2026</p>
+
       <h1>650,000 UK HMOs. No one is accountable when it fails.</h1>
+
       <p class="sub"><em>Rasalhague brings structure, proof, and responsibility back into shared housing.</em></p>
+
       <form action="https://rasalhague.us17.list-manage.com/subscribe/post?u=2fff9574227f866a9b6a51aea&id=29de4e7b8c&f_id=00c6eae3f0" method="POST" class="mc-form" target="_blank" novalidate>
+
         <input type="email" name="EMAIL" placeholder="Your email" required />
+
         <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_2fff9574227f866a9b6a51aea_29de4e7b8c" tabindex="-1" value="" /></div>
+
         <button type="submit">Be the first to know &rarr;</button>
+
       </form>
+
         <p class="form-consent">We&rsquo;ll only use your email to tell you when Rasalhague opens. No spam, unsubscribe anytime. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+
+        <p class="form-msg" role="status" aria-live="polite" hidden></p>
+
       <div class="stat-grid">
+
         <div class="stat-card"><div class="stat-num">650,000</div><div class="stat-label">Licensed UK HMOs</div></div>
+
         <div class="stat-card"><div class="stat-num">94.7%</div><div class="stat-label">Run issues over WhatsApp &amp; chat</div></div>
+
                 <div class="stat-card"><div class="stat-num">84.2%</div><div class="stat-label">No audit trail of repairs</div></div>
+
       </div>
+
     </div>
+
   </section>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">The Problem</span></div>
+
     <div class="section-right">
+
        <h2>What actually happens when no one owns the issue</h2>
+
        <p>A small problem can become serious fast. A tenant reports a leak with a photo and a short message &mdash; the way most housing issues are still raised today. No one replies. The message moves up the thread and disappears from view.</p>
+
        <p>By the next evening, water has reached the wiring and is running from the power sockets. Six people are still living in the house, still paying rent, and still waiting for help.</p>
+
        <p>This is not an extreme example. It is a common failure pattern &mdash; and I know because I lived inside it.</p>
+
        <p>This is how UK shared housing too often works: a 650,000-property sector where urgent problems can disappear into informal messages and tenants are left chasing silence.</p>
+
       </div>
+
   </div></div></div>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">Lived Experience</span></div>
+
     <div class="section-right">
+
        <h2>Different tenancies. The same failure pattern.</h2>
+
        <p>I saw the same issues repeat across four shared properties in Newcastle, as well as stays with friends in Manchester and London. Whether the property was agency-managed, privately owned, or part of a landlord portfolio, the operating pattern rarely changed.</p>
+
        <ul class="num-list">
+
          <li><span class="num">01</span><span class="text">Damp was blamed on tenants drying clothes indoors.</span></li>
+
          <li><span class="num">02</span><span class="text">A leaking sewer flooded the backyard, yet the tenant was asked to arrange the repair.</span></li>
+
          <li><span class="num">03</span><span class="text">Mould was blamed on a cat living in the home.</span></li>
+
          <li><span class="num">04</span><span class="text">Faulty heating equipment left an old property dangerously overheated.</span></li>
+
          <li><span class="num">05</span><span class="text">A tenant&rsquo;s bedroom door was forced during an attempted break-in.</span></li>
+
          <li><span class="num">06</span><span class="text">A heating system smelled like rotten eggs, leading to the fire service being called.</span></li>
+
          <li><span class="num">07</span><span class="text">A broken fence was repeatedly patched with its own broken pieces.</span></li>
+
          <li><span class="num">08</span><span class="text">Tenants were threatened with eviction, and belongings were removed from rooms without consent.</span></li>
+
          <li><span class="num">09</span><span class="text">Severe mould and damp were covered with fresh paint or new carpet instead of being properly resolved.</span></li>
+
        </ul>
+
        <p>The buildings were not the only problem. The operating model was. There was no reliable reporting process, no triage, no response timeline, no verified closure, and no consequence for delay.</p>
+
       </div>
+
   </div></div></div>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">The Shift</span></div>
+
     <div class="section-right">
+
        <h2>From maritime discipline to housing accountability</h2>
+
        <p>Ships don&rsquo;t run on goodwill. Homes shouldn&rsquo;t either.</p>
+
        <p>Before building Rasalhague, I served in the merchant navy as a Navigating Officer on oil tankers. That experience shaped how I think about safety, responsibility, and operational discipline.</p>
+
        <p>Ships stay safe because their systems are clear, auditable, and difficult to ignore. Hazards are classified. Response times are defined. Actions are recorded. Nothing important depends on memory, mood, or goodwill.</p>
+
        <p>Rasalhague applies that discipline to UK shared housing: every issue is structured, assigned, timed, recorded, and closed with evidence.</p>
+
       </div>
+
   </div></div></div>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">What It Is</span></div>
+
     <div class="section-right">
+
        <h2>Not another admin tool. An operating layer for responsibility.</h2>
+
        <p>Rasalhague is the operational governance layer for UK shared housing. It is built on one simple rule: every issue needs an owner, a timeframe, a record, and a verified close.</p>
+
        <p>It brings landlords and tenants into the same workflow. Tenants can report issues, see them prioritised, follow the response, and confirm completion without being reduced to names on a file.</p>
+
        <p>Structured reports replace scattered messages. Urgency is assessed, response windows are set, and the works log remains permanent and uneditable.</p>
+
        <p>No lost chat threads. No vague promises. No mould blamed on the cats.</p>
+
       </div>
+
   </div></div></div>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">How It Works</span></div>
+
     <div class="section-right">
+
        <h2>Three clear steps. One accountable record.</h2>
+
        <ul class="num-list">
+
          <li><span class="num">01</span><span class="text"><strong>Report the issue.</strong> Tenants raise repairs, hazards, and maintenance concerns through structured reports instead of informal messages that can be missed.</span></li>
+
          <li><span class="num">02</span><span class="text"><strong>Prioritise the response.</strong> Each issue is logged, ranked by urgency, and given a defined response timeframe. The process does not depend on mood, memory, or goodwill.</span></li>
+
          <li><span class="num">03</span><span class="text"><strong>Resolve and verify completion.</strong> Closure requires evidence, and every action remains part of a permanent works log that cannot be quietly changed later.</span></li>
+
        </ul>
+
       </div>
+
   </div></div></div>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">Built On Evidence</span></div>
+
     <div class="section-right">
+
        <h2>Evidence-led. Standards-aligned. Designed for real-world housing.</h2>
+
        <p>Rasalhague is not built on opinion. Its case is supported by peer-reviewed academic research into tenant experience and landlord operations, drawn from two independent UK university studies.</p>
+
        <p>The platform is designed around current UK housing health and safety standards and aligned with the direction of private rented sector reform.</p>
+
        <p>In settings where responsibility is institutionalised &mdash; such as student accommodation or regulated landlord housing &mdash; outcomes improve because issues are captured, assigned, monitored, and evidenced.</p>
+
        <p>Most shared housing has never had an equivalent operating standard. That is the gap Rasalhague is built to close.</p>
+
       </div>
+
   </div></div></div>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">Who It&rsquo;s For</span></div>
+
     <div class="section-right">
+
        <h2>For operators who want shared housing to run properly.</h2>
+
        <ul class="num-list">
+
          <li><span class="num">01</span><span class="text">HMO landlords managing anything from a three-bed house share to a thirty-room portfolio.</span></li>
+
          <li><span class="num">02</span><span class="text">Portfolio managers responsible for multiple shared properties and maintenance workflows.</span></li>
+
          <li><span class="num">03</span><span class="text">Estate and management companies running shared living at scale and needing clearer operational control.</span></li>
+
        </ul>
+
        <p>Rasalhague is UK-only at launch and HMO-only at this stage. If you run shared housing and need clearer control over repairs, hazards, and maintenance, it is built for you.</p>
+
       </div>
+
   </div></div></div>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">Founder</span></div>
+
     <div class="section-right">
+
        <h2>Why I&rsquo;m building this</h2>
+
        <p>I&rsquo;m Hitesh Siwach, founder of Rasalhague.</p>
+
        <p>My background taught me that safety depends on clear systems: risks are classified, actions are recorded, and responsibility is visible.</p>
+
        <p>When I came ashore, I spent more than two years living through the opposite: informal reporting, blurred responsibility, and tenants left to chase basic repairs.</p>
+
        <p>I built Rasalhague because shared housing should not depend on who shouts loudest. It should depend on systems that make responsibility visible.</p>
+
       </div>
+
   </div></div></div>
+
   <div class="section-wrap"><div class="container"><div class="section-card">
+
     <div class="section-left"><span class="label">FAQ</span></div>
+
     <div class="section-right">
+
       <h2>Questions worth answering.</h2>
+
       <details class="faq-item"><summary>When does Rasalhague launch?</summary><div class="faq-answer">Rasalhague is in development. Early updates will be shared as the platform moves toward launch.</div></details>
+
       <details class="faq-item"><summary>Who is it for?</summary><div class="faq-answer">Rasalhague is being built for UK HMO landlords, portfolio managers, and operators responsible for shared housing, repairs, hazards, and maintenance workflows.</div></details>
+
       <details class="faq-item"><summary>How is this different from property management software?</summary><div class="faq-answer">Most property tools focus on administration. Rasalhague is focused on operational responsibility: structured reporting, prioritised response, evidence-led closure, and a permanent works record.</div></details>
+
       <details class="faq-item"><summary>What will it cost?</summary><div class="faq-answer">Pricing is kept practical for landlords and operators managing HMOs. Get in touch for more details.</div></details>
-      <details class="faq-item"><summary>How is my data handled?</summary><div class="faq-answer">Data handling is designed with privacy, security, and clear access control in mind. Full detail is in our <a href="/privacy" style="color:#5C94CC;">Privacy Policy</a>.</div></details>
+
+      <details class="faq-item"><summary>How is my data handled?</summary><div class="faq-answer">Data handling is designed with privacy, security, and clear access control in mind. Full detail is in our <a href="/privacy" style="color:#3E6A92;">Privacy Policy</a>.</div></details>
+
     </div>
+
   </div></div></div>
+
   <div class="section-cta-wrap"><div class="container">
+
     <div class="section-cta">
-      
+
       <h2>Be the first to know.</h2>
+
        <p>Rasalhague is opening soon for UK HMO landlords, operators, and portfolio managers who want shared housing to run with evidence, structure, and visible responsibility. Early updates will be shared as the platform develops.</p>
+
       <form action="https://rasalhague.us17.list-manage.com/subscribe/post?u=2fff9574227f866a9b6a51aea&id=29de4e7b8c&f_id=00c6eae3f0" method="POST" class="mc-form" target="_blank" novalidate>
+
         <input type="email" name="EMAIL" placeholder="Your email" required />
+
         <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_2fff9574227f866a9b6a51aea_29de4e7b8c" tabindex="-1" value="" /></div>
+
         <button type="submit">Be the first to know &rarr;</button>
+
       </form>
+
         <p class="form-consent">We&rsquo;ll only use your email to tell you when Rasalhague opens. No spam, unsubscribe anytime. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+
+        <p class="form-msg" role="status" aria-live="polite" hidden></p>
+
     </div>
+
   </div></div>
+
   <footer>
+
     <div class="container">
+
       <div class="footer-wordmark">Rasalhague</div>
+
       <div class="footer-meta">
+
         Rasalhague Ltd &middot; Companies House No. 17186277<br />
+
         9 St Georges Place, Brighton, BN1 4GB<br />
+
         hello@rasalhague.co.uk
+
 <br />
+
 <a href="/privacy.html" style="color:inherit;">Privacy Policy</a>
+
       </div>
+
     </div>
+
   </footer>
+
+  <script>
+
+  (function () {
+
+    function submitForm(form) {
+
+      var emailInput = form.querySelector('input[type="email"]');
+
+      var msg = form.parentNode.querySelector('.form-msg');
+
+      var email = emailInput ? emailInput.value.trim() : '';
+
+      if (!email) { return; }
+
+      if (msg) {
+
+        msg.hidden = false;
+
+        msg.classList.remove('is-error');
+
+        msg.textContent = 'Submitting…';
+
+      }
+
+      var url = form.getAttribute('action').replace('/post?', '/post-json?');
+
+      var params = [];
+
+      form.querySelectorAll('input').forEach(function (i) {
+
+        if (i.name) { params.push(encodeURIComponent(i.name) + '=' + encodeURIComponent(i.value)); }
+
+      });
+
+      var cb = 'mc_cb_' + Date.now();
+
+      var script = document.createElement('script');
+
+      var done = false;
+
+      window[cb] = function (data) {
+
+        done = true;
+
+        if (msg) {
+
+          if (data && data.result === 'success') {
+
+            msg.classList.remove('is-error');
+
+            msg.textContent = "You're on the list. We'll be in touch when Rasalhague opens.";
+
+            form.reset();
+
+          } else {
+
+            msg.classList.add('is-error');
+
+            var t = (data && data.msg ? data.msg : 'Something went wrong. Please try again.').replace(/^\d+\s*-\s*/, '');
+
+            msg.textContent = t;
+
+          }
+
+        }
+
+        cleanup();
+
+      };
+
+      function cleanup() {
+
+        try { delete window[cb]; } catch (e) { window[cb] = undefined; }
+
+        if (script.parentNode) { script.parentNode.removeChild(script); }
+
+      }
+
+      script.onerror = function () {
+
+        if (done) { return; }
+
+        if (msg) { msg.classList.add('is-error'); msg.textContent = 'Network error. Please try again.'; }
+
+        cleanup();
+
+      };
+
+      params.push('c=' + cb);
+
+      script.src = url + '&' + params.join('&');
+
+      document.body.appendChild(script);
+
+    }
+
+    document.querySelectorAll('form.mc-form').forEach(function (form) {
+
+      form.addEventListener('submit', function (e) {
+
+        e.preventDefault();
+
+        submitForm(form);
+
+      });
+
+    });
+
+  })();
+
+  </script>
+
 </body>
+
 </html>
