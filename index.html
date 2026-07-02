@@ -56,8 +56,8 @@
   ol,ul{margin:6px 0 0;padding-left:20px;max-width:64ch;}
   ol.spaced li,ul.spaced li{margin:0 0 11px;font-size:clamp(15px,1.3vw,16.8px);line-height:1.55;font-weight:300;padding-left:4px;}
   ol.steps{list-style:none;padding:0;counter-reset:s;}
-  ol.steps li{counter-increment:s;position:relative;padding:0 0 18px 52px;margin:0;min-height:40px;}
-  ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;font-family:'Instrument Serif';font-style:italic;font-size:34px;color:var(--blue);line-height:1;}
+  ol.steps li{counter-increment:s;position:relative;padding:0 0 18px 52px;margin:0;}
+  ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:'Instrument Serif';font-style:italic;font-size:34px;color:var(--blue);line-height:1;}
   ol.steps li p{margin:0;}
   ol.steps li strong{display:block;margin-bottom:2px;}
   .faq{display:flex;flex-direction:column;}
@@ -96,8 +96,8 @@
   .foot .fright{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--label);text-align:right;}
   .foot .fright a{display:block;color:var(--link);text-decoration:none;margin-top:6px;}
   ol.numbered{list-style:none;counter-reset:n;padding-left:0;margin:8px 0 0;max-width:64ch;}
-  ol.numbered li{counter-increment:n;position:relative;padding:0 0 15px 56px;margin:0;min-height:40px;font-size:clamp(15px,1.3vw,16.8px);line-height:1.55;font-weight:300;}
-  ol.numbered li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:0;font-family:'Instrument Serif';font-style:italic;font-size:34px;color:var(--blue);line-height:1;opacity:1;}
+  ol.numbered li{counter-increment:n;position:relative;padding:0 0 15px 56px;margin:0;font-size:clamp(15px,1.3vw,16.8px);line-height:1.55;font-weight:300;}
+  ol.numbered li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:-3px;font-family:'Instrument Serif';font-style:italic;font-size:34px;color:var(--blue);line-height:1;opacity:1;}
   ol.steps li::before{opacity:1;}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;}.card{transition:none;}ol.numbered li::before,ol.steps li::before{opacity:1 !important;transform:none !important;}.damp-blotch{display:none !important;}}
   @media (max-width:900px){.card-in{flex-direction:column;gap:20px;}.col-l{flex:none;width:100%;flex-direction:row;align-items:center;gap:22px;}.label{margin:0;}.doodle{max-width:98px;margin:0;flex:none;}}
