@@ -7,22 +7,39 @@
 <meta name="theme-color" content="#FAFAF8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FAFAF8; --ink:#131C28; --body:#3A4657; --muted:#66707F; --line:#E7E9EE;
     --grad-a:#3B6FE0; --grad-b:#7B5BE6;
     --grad:linear-gradient(120deg,#3B6FE0,#7B5BE6);
     --ease:cubic-bezier(.22,1,.36,1);
+    --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+    --font-body:'Instrument Sans','Inter',system-ui,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--bg);color:var(--body);font-family:'Inter',system-ui,sans-serif;font-weight:400;line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased;}
-  .head{max-width:760px;margin:0 auto;padding:26px 2rem 0;display:flex;align-items:center;justify-content:space-between;}
-  .brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--ink);text-decoration:none;}
-  .container{max-width:760px;margin:0 auto;padding:3.5rem 2rem 6rem;}
-  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,3.2rem);letter-spacing:-.022em;line-height:1.08;color:var(--ink);margin-bottom:.5rem;text-wrap:balance;}
+  body{background:var(--bg);color:var(--body);font-family:var(--font-body);font-optical-sizing:auto;font-weight:400;line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+  /* ---------- ambient background (matches home page) ---------- */
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:radial-gradient(1000px 640px at 88% -12%,rgba(123,91,230,.20),transparent 66%),
+               radial-gradient(880px 600px at -12% 22%,rgba(59,111,224,.17),transparent 66%),
+               radial-gradient(820px 560px at 108% 62%,rgba(16,148,136,.13),transparent 70%),
+               radial-gradient(760px 540px at 52% 118%,rgba(245,168,60,.12),transparent 70%);}
+  .blob{position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(70px);opacity:.65;}
+  #blob-a{top:-160px;right:-120px;width:520px;height:520px;background:radial-gradient(circle,rgba(123,91,230,.36),transparent 70%);}
+  #blob-b{top:34%;left:-200px;width:560px;height:560px;background:radial-gradient(circle,rgba(59,111,224,.30),transparent 70%);}
+  #blob-c{top:66%;right:-180px;width:500px;height:500px;background:radial-gradient(circle,rgba(16,148,136,.26),transparent 70%);}
+  #deco{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
+  #deco .shoot{opacity:0;}
+  @media (max-width:700px){#deco{display:none;}}
+
+  .head{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:26px 2rem 0;display:flex;align-items:center;justify-content:space-between;}
+  .brand{font-family:var(--font-display);font-weight:600;font-size:24px;letter-spacing:0;color:var(--ink);text-decoration:none;}
+  .container{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:3.5rem 2rem 6rem;}
+  h1{font-family:var(--font-display);font-weight:600;font-size:clamp(2.3rem,5vw,3.4rem);letter-spacing:-.012em;line-height:1.08;color:var(--ink);margin-bottom:.5rem;text-wrap:balance;}
   .updated{font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3rem;}
-  h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.4rem;letter-spacing:-.015em;color:#2F5FD0;margin:2.5rem 0 .8rem;}
+  h2{font-family:var(--font-display);font-weight:600;font-size:1.5rem;letter-spacing:-.008em;color:#2F5FD0;margin:2.5rem 0 .8rem;}
   p{margin-bottom:1rem;max-width:60ch;text-wrap:pretty;}
   ul{margin:0 0 1rem 1.2rem;}
   li{margin-bottom:.5rem;max-width:60ch;}
@@ -34,10 +51,129 @@
   @media (prefers-reduced-motion:no-preference){
     .container,.head{animation:enter .6s var(--ease);}
     @keyframes enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    #blob-a{animation:driftA 26s ease-in-out infinite alternate;}
+    #blob-b{animation:driftB 32s ease-in-out infinite alternate;}
+    #blob-c{animation:driftC 29s ease-in-out infinite alternate;}
+    @keyframes driftA{to{transform:translate(-90px,70px) scale(1.12);}}
+    @keyframes driftB{to{transform:translate(110px,-60px) scale(1.08);}}
+    @keyframes driftC{to{transform:translate(-70px,-80px) scale(1.1);}}
+    .fc{transform-box:fill-box;transform-origin:center;}
+    .fc-1{animation:floatA 18s ease-in-out infinite alternate;}
+    .fc-3{animation:floatA 21s ease-in-out infinite alternate-reverse;}
+    .fc-4{animation:floatB 17s ease-in-out infinite alternate-reverse;}
+    .fc-5{animation:floatA 26s ease-in-out infinite alternate;}
+    .fc-6{animation:floatB 20s ease-in-out infinite alternate;}
+    .fc-7{animation:floatA 23s ease-in-out infinite alternate-reverse;}
+    .fc-8{animation:floatB 28s ease-in-out infinite alternate;}
+    @keyframes floatA{to{transform:translate(14px,-12px) rotate(1.2deg)}}
+    @keyframes floatB{to{transform:translate(-12px,14px) rotate(-1.2deg)}}
+    #deco .twinkles circle{transform-box:fill-box;transform-origin:center;animation:twk 4s ease-in-out infinite;}
+    #deco .twinkles circle:nth-child(3n){animation-duration:5.6s}
+    #deco .twinkles circle:nth-child(4n+1){animation-duration:3.2s}
+    #deco .twinkles circle:nth-child(2n){animation-delay:-1.6s}
+    #deco .twinkles circle:nth-child(5n){animation-delay:-2.8s}
+    #deco .twinkles circle:nth-child(7n){animation-delay:-3.7s}
+    @keyframes twk{0%,100%{opacity:1}50%{opacity:.25}}
+    #deco .fc g[fill] circle{transform-box:fill-box;transform-origin:center;animation:twkSoft 6s ease-in-out infinite;}
+    #deco .fc g[fill] circle:nth-child(2n){animation-delay:-2.4s}
+    #deco .fc g[fill] circle:nth-child(3n){animation-duration:7.6s;animation-delay:-1.2s}
+    @keyframes twkSoft{0%,100%{opacity:1}50%{opacity:.5}}
+    #deco .shoot{will-change:transform,opacity}
+    #deco .shoot-1{animation:shoot 12s var(--ease) infinite 2s}
+    #deco .shoot-2{animation:shoot 15s var(--ease) infinite 8.5s}
+    #deco .shoot-3{animation:shoot 13s var(--ease) infinite 4.5s}
+    #deco .shoot-4{animation:shoot 16s var(--ease) infinite 10s}
+    #deco .shoot-5{animation:shoot 14s var(--ease) infinite 1.5s}
+    #deco .shoot-6{animation:shoot 17s var(--ease) infinite 7s}
+    @keyframes shoot{0%{opacity:0;transform:translate(-30px,-14px)}4%{opacity:.85}11%{opacity:.85}17%{opacity:0}100%{opacity:0;transform:translate(320px,150px)}}
   }
 </style>
 </head>
 <body>
+<div class="blob" id="blob-a" aria-hidden="true"></div>
+<div class="blob" id="blob-b" aria-hidden="true"></div>
+<div class="blob" id="blob-c" aria-hidden="true"></div>
+<svg id="deco" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
+  <g class="fc fc-1" stroke="rgba(85,96,110,.24)" stroke-width="1.2">
+    <path d="M120 150 L165 100 L210 140 L255 95 L300 130"/>
+    <g fill="rgba(59,111,224,.5)" stroke="none">
+      <circle cx="120" cy="150" r="2.6"/><circle cx="165" cy="100" r="2.2"/><circle cx="210" cy="140" r="2.4"/><circle cx="255" cy="95" r="2.2"/><circle cx="300" cy="130" r="2.6"/>
+    </g>
+  </g>
+  <g class="fc fc-3" stroke="rgba(85,96,110,.24)" stroke-width="1.2">
+    <path d="M170 660 L185 690 L225 705 L215 750 L175 735 L185 690"/>
+    <g fill="rgba(59,111,224,.5)" stroke="none">
+      <circle cx="185" cy="690" r="2.2"/><circle cx="225" cy="705" r="2.2"/><circle cx="215" cy="750" r="2.2"/><circle cx="175" cy="735" r="2.2"/>
+    </g>
+    <circle cx="170" cy="660" r="3" fill="rgba(245,168,60,.85)" stroke="none"/>
+  </g>
+  <g class="fc fc-4" stroke="rgba(85,96,110,.24)" stroke-width="1.2">
+    <path d="M1290 720 L1320 708 L1340 730 L1312 745 L1290 720 M1312 745 L1288 775 L1265 790"/>
+    <g fill="rgba(59,111,224,.5)" stroke="none">
+      <circle cx="1290" cy="720" r="2.2"/><circle cx="1320" cy="708" r="2.2"/><circle cx="1340" cy="730" r="2.2"/><circle cx="1312" cy="745" r="2.2"/><circle cx="1288" cy="775" r="2"/><circle cx="1265" cy="790" r="2.2"/>
+    </g>
+  </g>
+  <g class="fc fc-5" stroke="rgba(85,96,110,.22)" stroke-width="1.2">
+    <path d="M70 470 L95 440 L130 425 L170 430 L200 452 L214 482 L208 508"/>
+    <g fill="rgba(59,111,224,.46)" stroke="none">
+      <circle cx="70" cy="470" r="2"/><circle cx="95" cy="440" r="2.2"/><circle cx="130" cy="425" r="2.4"/><circle cx="170" cy="430" r="2.2"/><circle cx="200" cy="452" r="2.2"/><circle cx="214" cy="482" r="2"/><circle cx="208" cy="508" r="2"/>
+    </g>
+  </g>
+  <g class="fc fc-6" stroke="rgba(85,96,110,.22)" stroke-width="1.2">
+    <path d="M690 84 L724 66 L762 78 L742 108 L724 66"/>
+    <g fill="rgba(59,111,224,.44)" stroke="none">
+      <circle cx="690" cy="84" r="2"/><circle cx="724" cy="66" r="2.2"/><circle cx="762" cy="78" r="2"/><circle cx="742" cy="108" r="2"/>
+    </g>
+  </g>
+  <g class="fc fc-7" stroke="rgba(85,96,110,.22)" stroke-width="1.2">
+    <path d="M1092 470 L1150 440 L1206 472 L1174 528 L1100 520 L1092 470"/>
+    <g fill="rgba(59,111,224,.46)" stroke="none">
+      <circle cx="1092" cy="470" r="2.2"/><circle cx="1206" cy="472" r="2.2"/><circle cx="1174" cy="528" r="2.2"/><circle cx="1100" cy="520" r="2"/>
+    </g>
+    <circle cx="1150" cy="440" r="3" fill="rgba(245,168,60,.8)" stroke="none"/>
+  </g>
+  <g class="fc fc-8" stroke="rgba(85,96,110,.22)" stroke-width="1.2">
+    <path d="M524 782 L580 747 L634 802 L694 752 L764 796"/>
+    <g fill="rgba(59,111,224,.46)" stroke="none">
+      <circle cx="524" cy="782" r="2.2"/><circle cx="580" cy="747" r="2.2"/><circle cx="634" cy="802" r="2.4"/><circle cx="694" cy="752" r="2.2"/>
+    </g>
+    <circle cx="764" cy="796" r="3" fill="rgba(245,168,60,.8)" stroke="none"/>
+  </g>
+  <g class="twinkles" fill="rgba(85,96,110,.30)">
+    <circle cx="104" cy="84" r="2"/><circle cx="184" cy="304" r="1.6"/><circle cx="58" cy="702" r="1.8"/>
+    <circle cx="298" cy="838" r="1.6"/><circle cx="342" cy="486" r="1.4"/><circle cx="1262" cy="122" r="1.8"/>
+    <circle cx="1392" cy="296" r="1.6"/><circle cx="1182" cy="818" r="1.7"/><circle cx="1424" cy="756" r="1.5"/>
+    <circle cx="1330" cy="422" r="1.6"/><circle cx="1096" cy="678" r="1.4"/><circle cx="238" cy="626" r="1.5"/>
+    <circle cx="520" cy="150" r="1.5"/><circle cx="840" cy="360" r="1.4"/><circle cx="470" cy="618" r="1.5"/>
+    <circle cx="958" cy="642" r="1.6"/><circle cx="1158" cy="242" r="1.4"/><circle cx="726" cy="470" r="1.3"/>
+    <circle cx="642" cy="232" r="1.4"/><circle cx="1082" cy="560" r="1.4"/><circle cx="410" cy="380" r="1.3"/>
+  </g>
+  <g class="twinkles" fill="rgba(245,168,60,.55)"><circle cx="1258" cy="500" r="2.4"/><circle cx="150" cy="196" r="2.2"/><circle cx="815" cy="150" r="2"/></g>
+  <g class="shoot shoot-1">
+    <line x1="228" y1="150" x2="196" y2="136" stroke="rgba(120,140,205,.5)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="228" cy="150" r="1.9" fill="rgba(150,172,228,.95)"/>
+  </g>
+  <g class="shoot shoot-2">
+    <line x1="1006" y1="150" x2="974" y2="136" stroke="rgba(150,120,205,.46)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="1006" cy="150" r="1.8" fill="rgba(178,150,228,.95)"/>
+  </g>
+  <g class="shoot shoot-3">
+    <line x1="150" y1="250" x2="118" y2="236" stroke="rgba(120,140,205,.5)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="150" cy="250" r="1.8" fill="rgba(150,172,228,.95)"/>
+  </g>
+  <g class="shoot shoot-4">
+    <line x1="720" y1="110" x2="688" y2="96" stroke="rgba(150,120,205,.46)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="720" cy="110" r="1.8" fill="rgba(178,150,228,.95)"/>
+  </g>
+  <g class="shoot shoot-5">
+    <line x1="430" y1="470" x2="398" y2="456" stroke="rgba(120,140,205,.48)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="430" cy="470" r="1.7" fill="rgba(150,172,228,.95)"/>
+  </g>
+  <g class="shoot shoot-6">
+    <line x1="980" y1="560" x2="948" y2="546" stroke="rgba(150,120,205,.44)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="980" cy="560" r="1.7" fill="rgba(178,150,228,.95)"/>
+  </g>
+</svg>
 <header class="head"><a class="brand" href="/">Rasalhague</a></header>
 <div class="container">
   <h1>Privacy Policy</h1>

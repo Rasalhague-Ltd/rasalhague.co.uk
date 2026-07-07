@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#FAFAF8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FAFAF8; --surface:#FFFFFF; --ink:#131C28; --body:#3A4657;
@@ -20,10 +20,13 @@
     --shadow-lg:0 2px 4px rgba(19,28,40,.06),0 16px 40px rgba(19,28,40,.10);
     --radius:20px;
     --ease:cubic-bezier(.22,1,.36,1);
+    --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+    --font-body:'Instrument Sans','Inter',system-ui,sans-serif;
+    --font-mono:'Space Grotesk',ui-monospace,monospace;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--body);font-family:'Inter',system-ui,sans-serif;font-size:17px;font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body{margin:0;background:var(--bg);color:var(--body);font-family:var(--font-body);font-optical-sizing:auto;font-size:17px;font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     background:radial-gradient(1000px 640px at 88% -12%,rgba(123,91,230,.20),transparent 66%),
                radial-gradient(880px 600px at -12% 22%,rgba(59,111,224,.17),transparent 66%),
@@ -34,6 +37,7 @@
   #blob-b{top:34%;left:-200px;width:560px;height:560px;background:radial-gradient(circle,rgba(59,111,224,.30),transparent 70%);}
   #blob-c{top:66%;right:-180px;width:500px;height:500px;background:radial-gradient(circle,rgba(16,148,136,.26),transparent 70%);}
   #deco{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
+  #deco .shoot{opacity:0;}
   @media (max-width:700px){#deco{display:none;}}
   .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px);}
   a{color:var(--grad-a);text-underline-offset:3px;}
@@ -41,7 +45,7 @@
   /* ---------- header ---------- */
   #progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 0;background:linear-gradient(90deg,#3B6FE0,#7B5BE6 55%,#F5A83C);z-index:50;pointer-events:none;}
   .head{display:flex;align-items:center;justify-content:space-between;padding:26px 0 8px;position:relative;z-index:2;}
-  .brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--ink);text-decoration:none;}
+  .brand{font-family:var(--font-display);font-weight:600;font-size:24px;letter-spacing:0;color:var(--ink);text-decoration:none;}
   .nav-cta{font-family:'Space Grotesk',monospace;text-transform:uppercase;font-size:12px;letter-spacing:.13em;color:#fff;text-decoration:none;background:var(--grad);background-size:170% 100%;background-position:0 0;padding:10px 18px;border-radius:12px;transition:transform .16s var(--ease),box-shadow .16s var(--ease),background-position .3s var(--ease);}
   .nav-cta:hover{background-position:85% 0;}
   .nav-cta:hover{box-shadow:0 4px 16px rgba(59,111,224,.35);transform:translateY(-1px);}
@@ -58,15 +62,15 @@
   #alpha{fill:var(--amber);filter:drop-shadow(0 0 9px rgba(245,168,60,.85));}
   .hero-copy{position:relative;z-index:1;max-width:780px;}
   .cap{font-family:'Space Grotesk',monospace;text-transform:uppercase;font-size:12px;letter-spacing:.18em;color:var(--muted);margin:0 0 22px;}
-  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(38px,5.6vw,66px);line-height:1.04;letter-spacing:-.022em;color:var(--ink);margin:0 0 22px;text-wrap:balance;}
-  h1 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,5.8vw,70px);line-height:1.05;letter-spacing:-.012em;color:var(--ink);margin:0 0 22px;text-wrap:balance;}
+  h1 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;font-weight:500;}
   .sub{font-size:clamp(18px,2vw,21px);font-weight:400;color:var(--body);margin:0 0 32px;line-height:1.5;max-width:56ch;}
 
   /* ---------- form ---------- */
   .form{max-width:500px;}
   .field{display:flex;gap:8px;border:1px solid var(--line);border-radius:16px;padding:6px;background:var(--surface);box-shadow:var(--shadow-sm);transition:box-shadow .2s var(--ease),border-color .2s var(--ease);}
   .field:focus-within{border-color:var(--grad-a);box-shadow:0 0 0 4px rgba(59,111,224,.14),var(--shadow-sm);}
-  .field input{flex:1;min-width:0;border:0;background:transparent;font-family:'Inter',sans-serif;font-size:16px;padding:12px 12px;color:var(--ink);outline:none;}
+  .field input{flex:1;min-width:0;border:0;background:transparent;font-family:var(--font-body);font-size:16px;padding:12px 12px;color:var(--ink);outline:none;}
   .field input::placeholder{color:var(--muted);}
   .field button{font-family:'Space Grotesk',monospace;text-transform:uppercase;font-size:12px;letter-spacing:.08em;font-weight:500;background:var(--grad);background-size:170% 100%;background-position:0 0;color:#fff;border:0;border-radius:11px;padding:0 20px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:transform .16s var(--ease),box-shadow .16s var(--ease),background-position .3s var(--ease);}
   .field button .arr{display:inline-block;transition:transform .2s var(--ease);}
@@ -83,55 +87,63 @@
 
   /* ---------- stats ---------- */
   .stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:clamp(40px,5vw,60px) 0 0;padding-top:36px;border-top:1px solid var(--line);}
-  .stat .fig{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,4.6vw,50px);letter-spacing:-.02em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .stat .fig{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,4.6vw,52px);letter-spacing:-.01em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .stat .cap2{font-family:'Space Grotesk',monospace;text-transform:uppercase;font-size:11.5px;letter-spacing:.1em;color:var(--muted);margin-top:12px;line-height:1.5;}
 
   /* ---------- cards ---------- */
   .sections{padding:clamp(44px,6vw,80px) 0 0;}
-  .card{position:relative;--acc:#2F5FD0;--tint:#EAF1FE;--tline:#D6E2FB;background:linear-gradient(180deg,#FFFFFF 0%,var(--tint) 100%);border:1px solid var(--tline);border-radius:var(--radius);padding:clamp(26px,4vw,46px);margin:0 0 24px;box-shadow:var(--shadow-sm);transition:transform .25s var(--ease),box-shadow .25s var(--ease);}
-  .c-violet{--acc:#6A48DB;--tint:#F0EBFE;--tline:#E3D9FB;}
-  .c-teal{--acc:#0D7D74;--tint:#E4F6F1;--tline:#C6EAE1;}
-  .c-amber{--acc:#A85607;--tint:#FCF1E0;--tline:#F3DFBB;}
+  .card{position:relative;isolation:isolate;--acc:#2F5FD0;--g1:#FBFCFF;--g2:#E1EBFF;--tline:#D1DEFB;background:linear-gradient(150deg,var(--g1) 0%,var(--g2) 100%);border:1px solid var(--tline);border-radius:var(--radius);padding:clamp(26px,4vw,46px);margin:0 0 24px;box-shadow:var(--shadow-sm);transition:transform .25s var(--ease),box-shadow .25s var(--ease);}
+  .card::before{content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;pointer-events:none;background:radial-gradient(125% 92% at 100% 0%,color-mix(in srgb,var(--acc) 16%,transparent),transparent 62%);}
+  /* each card its own hue — no two alike */
+  .k1{--acc:#7C6417;--g1:#FFFEF5;--g2:#F7EFCB;--tline:#ECDFA6;}
+  .k2{--acc:#6F6357;--g1:#FDFCFA;--g2:#F0ECE4;--tline:#E3DCD0;}
+  .k3{--acc:#626263;--g1:#FCFCFC;--g2:#ECECEC;--tline:#DDDDDE;}
+  .k4{--acc:#C23A6B;--g1:#FFFAFC;--g2:#FBE2EC;--tline:#F5CFDE;}
+  .k5{--acc:#1E7A46;--g1:#F8FEFA;--g2:#DEF3E6;--tline:#C5E9D0;}
+  .k6{--acc:#0E6F92;--g1:#F6FDFF;--g2:#DBEFF9;--tline:#BFE2F1;}
+  .k7{--acc:#A85607;--g1:#FFFCF6;--g2:#FBEDD9;--tline:#F1DBB4;}
+  .k8{--acc:#BC3B3B;--g1:#FFF9F8;--g2:#FAE2DD;--tline:#F4CFC8;}
+  .k9{--acc:#9A3AA0;--g1:#FEF9FF;--g2:#F4E1F6;--tline:#EACEEE;}
   .card h2{color:var(--acc);}
   .card .label{color:var(--acc);}
   .card .ico{stroke:var(--acc);}
   .card ol.numbered li::before,.card ol.steps li::before{background:var(--acc);-webkit-background-clip:text;background-clip:text;}
   .card .faq-ic::before,.card .faq-ic::after{background:var(--acc);}
-  .card::after{content:"";position:absolute;inset:-1px;border-radius:calc(var(--radius) + 1px);padding:1.5px;background:var(--acc);opacity:0;transition:opacity .25s var(--ease);pointer-events:none;
+  .card::after{content:"";position:absolute;inset:-1px;z-index:2;border-radius:calc(var(--radius) + 1px);padding:1.5px;background:var(--acc);opacity:0;transition:opacity .25s var(--ease);pointer-events:none;
     -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;}
   @media (hover:hover) and (pointer:fine){
     .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
     .card:hover::after{opacity:.55;}
     .card:hover .ico{transform:translateY(-2px) scale(1.06);}
   }
-  .card-in{display:flex;gap:clamp(24px,4vw,52px);align-items:flex-start;}
+  .card-in{position:relative;z-index:1;display:flex;gap:clamp(24px,4vw,52px);align-items:flex-start;}
   .col-l{flex:0 0 180px;width:180px;display:flex;flex-direction:column;gap:14px;align-items:flex-start;}
   .col-r{flex:1 1 auto;min-width:0;}
   .label{font-family:'Space Grotesk',monospace;text-transform:uppercase;font-size:12px;letter-spacing:.14em;color:var(--muted);margin:0;}
   .ico{width:26px;height:26px;stroke:url(#icograd);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none;transition:transform .2s var(--ease);}
-  h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(25px,3.2vw,37px);line-height:1.12;letter-spacing:-.018em;color:var(--ink);margin:0 0 18px;text-wrap:balance;}
+  h2{font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.3vw,38px);line-height:1.14;letter-spacing:-.008em;color:var(--ink);margin:0 0 18px;text-wrap:balance;}
   .col-r p{font-size:clamp(15.5px,1.35vw,17px);line-height:1.68;color:var(--body);margin:0 0 15px;max-width:64ch;text-wrap:pretty;}
   .col-r p:last-child{margin-bottom:0;}
   strong{font-weight:600;color:var(--ink);}
   ol,ul{margin:6px 0 0;padding-left:20px;max-width:64ch;}
   ol.numbered{list-style:none;counter-reset:n;padding-left:0;margin:8px 0 0;}
   ol.numbered li{counter-increment:n;display:flex;align-items:baseline;gap:16px;padding:0 0 13px;margin:0;font-size:clamp(15px,1.3vw,16.6px);line-height:1.6;}
-  ol.numbered li::before{content:counter(n,decimal-leading-zero);font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;line-height:1;flex:0 0 auto;min-width:38px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  ol.numbered li::before{content:counter(n,decimal-leading-zero);font-family:var(--font-display);font-weight:600;font-size:24px;line-height:1;flex:0 0 auto;min-width:38px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
   ol.steps{list-style:none;padding:0;counter-reset:s;margin:0;}
   ol.steps li{counter-increment:s;position:relative;padding:0 0 20px 56px;margin:0;}
-  ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:30px;line-height:1.1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;font-family:var(--font-display);font-weight:600;font-size:32px;line-height:1.1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
   ol.steps li p{margin:0;}
   ol.steps li strong{display:block;margin-bottom:2px;}
 
   /* ---------- quote band ---------- */
   .band-light{background:linear-gradient(135deg,#FFFFFF,#E7EDFE 45%,#EFE6FD);border:1px solid #D9E0F8;border-radius:calc(var(--radius) + 4px);padding:clamp(36px,5vw,64px) clamp(26px,5vw,60px);margin:34px 0;text-align:center;}
-  .band-light .dquote{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(21px,2.5vw,30px);line-height:1.4;letter-spacing:-.012em;color:var(--ink);max-width:44ch;margin:0 auto;}
+  .band-light .dquote{font-family:var(--font-display);font-weight:500;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.42;letter-spacing:-.004em;color:var(--ink);max-width:44ch;margin:0 auto;}
 
   /* ---------- FAQ ---------- */
   .faq{display:flex;flex-direction:column;}
   .faq-item{border-bottom:1px solid var(--line);}
   .faq-item:last-child{border-bottom:0;}
-  .faq-q{list-style:none;width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;cursor:pointer;padding:17px 2px;font-family:'Inter',sans-serif;font-weight:500;color:var(--ink);font-size:clamp(16px,1.4vw,17.5px);line-height:1.4;transition:color .18s var(--ease);}
+  .faq-q{list-style:none;width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;cursor:pointer;padding:17px 2px;font-family:var(--font-body);font-weight:600;color:var(--ink);font-size:clamp(16px,1.4vw,17.5px);line-height:1.4;transition:color .18s var(--ease);}
   .faq-q::-webkit-details-marker{display:none;}
   .faq-q::marker{content:'';}
   .faq-q:hover{color:var(--grad-a);}
@@ -164,7 +176,7 @@
 
   /* ---------- footer ---------- */
   .foot{border-top:1px solid var(--line);margin-top:clamp(48px,7vw,84px);padding:32px 0 52px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-  .foot .fbrand{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:24px;color:var(--ink);line-height:1;margin-bottom:14px;}
+  .foot .fbrand{font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--ink);line-height:1;margin-bottom:14px;}
   .foot .fmeta{font-family:'Space Grotesk',monospace;font-size:12px;letter-spacing:.04em;color:var(--muted);line-height:1.9;}
   .foot .fmeta a{color:var(--grad-a);text-decoration:none;}
   .foot .fright{font-family:'Space Grotesk',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:right;}
@@ -197,12 +209,39 @@
     @keyframes driftA{to{transform:translate(-90px,70px) scale(1.12);}}
     @keyframes driftB{to{transform:translate(110px,-60px) scale(1.08);}}
     @keyframes driftC{to{transform:translate(-70px,-80px) scale(1.1);}}
-    .dw-a{animation:waveX 22s ease-in-out infinite alternate;}
-    .dw-b{animation:waveX 28s ease-in-out infinite alternate-reverse;}
-    .dw-c{animation:waveX 18s ease-in-out infinite alternate;}
-    @keyframes waveX{to{transform:translateX(44px)}}
-    .dring{transform-box:fill-box;transform-origin:center;animation:spin 90s linear infinite;}
-    @keyframes spin{to{transform:rotate(360deg)}}
+    .fc{transform-box:fill-box;transform-origin:center;}
+    .fc-1{animation:floatA 18s ease-in-out infinite alternate;}
+    .fc-2{animation:floatB 24s ease-in-out infinite alternate;}
+    .fc-3{animation:floatA 21s ease-in-out infinite alternate-reverse;}
+    .fc-4{animation:floatB 17s ease-in-out infinite alternate-reverse;}
+    .fc-5{animation:floatA 26s ease-in-out infinite alternate;}
+    .fc-6{animation:floatB 20s ease-in-out infinite alternate;}
+    .fc-7{animation:floatA 23s ease-in-out infinite alternate-reverse;}
+    .fc-8{animation:floatB 28s ease-in-out infinite alternate;}
+    .fc-9{animation:floatA 19s ease-in-out infinite alternate-reverse;}
+    @keyframes floatA{to{transform:translate(14px,-12px) rotate(1.2deg)}}
+    @keyframes floatB{to{transform:translate(-12px,14px) rotate(-1.2deg)}}
+    /* twinkling background stars */
+    #deco .twinkles circle{transform-box:fill-box;transform-origin:center;animation:twk 4s ease-in-out infinite;}
+    #deco .twinkles circle:nth-child(3n){animation-duration:5.6s}
+    #deco .twinkles circle:nth-child(4n+1){animation-duration:3.2s}
+    #deco .twinkles circle:nth-child(2n){animation-delay:-1.6s}
+    #deco .twinkles circle:nth-child(5n){animation-delay:-2.8s}
+    #deco .twinkles circle:nth-child(7n){animation-delay:-3.7s}
+    @keyframes twk{0%,100%{opacity:1}50%{opacity:.25}}
+    #deco .fc g[fill] circle{transform-box:fill-box;transform-origin:center;animation:twkSoft 6s ease-in-out infinite;}
+    #deco .fc g[fill] circle:nth-child(2n){animation-delay:-2.4s}
+    #deco .fc g[fill] circle:nth-child(3n){animation-duration:7.6s;animation-delay:-1.2s}
+    @keyframes twkSoft{0%,100%{opacity:1}50%{opacity:.5}}
+    /* occasional shooting stars */
+    #deco .shoot{will-change:transform,opacity}
+    #deco .shoot-1{animation:shoot 12s var(--ease) infinite 2s}
+    #deco .shoot-2{animation:shoot 15s var(--ease) infinite 8.5s}
+    #deco .shoot-3{animation:shoot 13s var(--ease) infinite 4.5s}
+    #deco .shoot-4{animation:shoot 16s var(--ease) infinite 10s}
+    #deco .shoot-5{animation:shoot 14s var(--ease) infinite 1.5s}
+    #deco .shoot-6{animation:shoot 17s var(--ease) infinite 7s}
+    @keyframes shoot{0%{opacity:0;transform:translate(-30px,-14px)}4%{opacity:.85}11%{opacity:.85}17%{opacity:0}100%{opacity:0;transform:translate(320px,150px)}}
     [data-enter]{opacity:0;transform:translateY(16px);animation:enter .7s var(--ease) forwards;}
     @keyframes enter{to{opacity:1;transform:none}}
     #skybg #figure line{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .6s var(--ease) forwards;}
@@ -254,30 +293,91 @@
 <div class="blob" id="blob-b" aria-hidden="true"></div>
 <div class="blob" id="blob-c" aria-hidden="true"></div>
 <svg id="deco" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
-  <g class="dw dw-a"><path d="M-80 210 C 120 170, 320 250, 520 210 S 920 170, 1120 210 S 1520 250, 1620 210" stroke="rgba(59,111,224,.16)" stroke-width="1.5"/></g>
-  <g class="dw dw-b"><path d="M-80 764 C 160 734, 360 794, 560 764 S 960 734, 1160 764 S 1560 794, 1660 764" stroke="rgba(13,125,116,.15)" stroke-width="1.5"/></g>
-  <g class="dw dw-c"><path d="M-60 120 C 60 100, 160 140, 260 120 S 460 100, 560 120 S 760 140, 860 120" stroke="rgba(123,91,230,.14)" stroke-width="1.5"/></g>
-  <circle cx="1335" cy="620" r="150" stroke="rgba(59,111,224,.15)" stroke-width="1.5"/>
-  <circle class="dring" cx="1335" cy="620" r="112" stroke="rgba(123,91,230,.20)" stroke-width="1.5" stroke-dasharray="3 11"/>
-  <circle cx="72" cy="500" r="96" stroke="rgba(13,125,116,.15)" stroke-width="1.5"/>
-  <circle class="dring" cx="72" cy="500" r="64" stroke="rgba(59,111,224,.16)" stroke-width="1.4" stroke-dasharray="3 10"/>
-  <circle cx="222" cy="118" r="30" stroke="rgba(245,168,60,.38)" stroke-width="1.6"/>
-  <circle cx="1150" cy="96" r="20" stroke="rgba(13,125,116,.22)" stroke-width="1.4"/>
-  <circle cx="470" cy="864" r="18" stroke="rgba(59,111,224,.24)" stroke-width="1.4"/>
-  <g fill="rgba(85,96,110,.30)">
+  <g class="fc fc-1" stroke="rgba(85,96,110,.24)" stroke-width="1.2">
+    <path d="M120 150 L165 100 L210 140 L255 95 L300 130"/>
+    <g fill="rgba(59,111,224,.5)" stroke="none">
+      <circle cx="120" cy="150" r="2.6"/><circle cx="165" cy="100" r="2.2"/><circle cx="210" cy="140" r="2.4"/><circle cx="255" cy="95" r="2.2"/><circle cx="300" cy="130" r="2.6"/>
+    </g>
+  </g>
+  <g class="fc fc-3" stroke="rgba(85,96,110,.24)" stroke-width="1.2">
+    <path d="M170 660 L185 690 L225 705 L215 750 L175 735 L185 690"/>
+    <g fill="rgba(59,111,224,.5)" stroke="none">
+      <circle cx="185" cy="690" r="2.2"/><circle cx="225" cy="705" r="2.2"/><circle cx="215" cy="750" r="2.2"/><circle cx="175" cy="735" r="2.2"/>
+    </g>
+    <circle cx="170" cy="660" r="3" fill="rgba(245,168,60,.85)" stroke="none"/>
+  </g>
+  <g class="fc fc-4" stroke="rgba(85,96,110,.24)" stroke-width="1.2">
+    <path d="M1290 720 L1320 708 L1340 730 L1312 745 L1290 720 M1312 745 L1288 775 L1265 790"/>
+    <g fill="rgba(59,111,224,.5)" stroke="none">
+      <circle cx="1290" cy="720" r="2.2"/><circle cx="1320" cy="708" r="2.2"/><circle cx="1340" cy="730" r="2.2"/><circle cx="1312" cy="745" r="2.2"/><circle cx="1288" cy="775" r="2"/><circle cx="1265" cy="790" r="2.2"/>
+    </g>
+  </g>
+  <g class="fc fc-5" stroke="rgba(85,96,110,.22)" stroke-width="1.2">
+    <path d="M70 470 L95 440 L130 425 L170 430 L200 452 L214 482 L208 508"/>
+    <g fill="rgba(59,111,224,.46)" stroke="none">
+      <circle cx="70" cy="470" r="2"/><circle cx="95" cy="440" r="2.2"/><circle cx="130" cy="425" r="2.4"/><circle cx="170" cy="430" r="2.2"/><circle cx="200" cy="452" r="2.2"/><circle cx="214" cy="482" r="2"/><circle cx="208" cy="508" r="2"/>
+    </g>
+  </g>
+  <g class="fc fc-6" stroke="rgba(85,96,110,.22)" stroke-width="1.2">
+    <path d="M690 84 L724 66 L762 78 L742 108 L724 66"/>
+    <g fill="rgba(59,111,224,.44)" stroke="none">
+      <circle cx="690" cy="84" r="2"/><circle cx="724" cy="66" r="2.2"/><circle cx="762" cy="78" r="2"/><circle cx="742" cy="108" r="2"/>
+    </g>
+  </g>
+  <g class="fc fc-7" stroke="rgba(85,96,110,.22)" stroke-width="1.2">
+    <path d="M1092 470 L1150 440 L1206 472 L1174 528 L1100 520 L1092 470"/>
+    <g fill="rgba(59,111,224,.46)" stroke="none">
+      <circle cx="1092" cy="470" r="2.2"/><circle cx="1206" cy="472" r="2.2"/><circle cx="1174" cy="528" r="2.2"/><circle cx="1100" cy="520" r="2"/>
+    </g>
+    <circle cx="1150" cy="440" r="3" fill="rgba(245,168,60,.8)" stroke="none"/>
+  </g>
+  <g class="fc fc-8" stroke="rgba(85,96,110,.22)" stroke-width="1.2">
+    <path d="M524 782 L580 747 L634 802 L694 752 L764 796"/>
+    <g fill="rgba(59,111,224,.46)" stroke="none">
+      <circle cx="524" cy="782" r="2.2"/><circle cx="580" cy="747" r="2.2"/><circle cx="634" cy="802" r="2.4"/><circle cx="694" cy="752" r="2.2"/>
+    </g>
+    <circle cx="764" cy="796" r="3" fill="rgba(245,168,60,.8)" stroke="none"/>
+  </g>
+  <g class="twinkles" fill="rgba(85,96,110,.30)">
     <circle cx="104" cy="84" r="2"/><circle cx="184" cy="304" r="1.6"/><circle cx="58" cy="702" r="1.8"/>
     <circle cx="298" cy="838" r="1.6"/><circle cx="342" cy="486" r="1.4"/><circle cx="1262" cy="122" r="1.8"/>
     <circle cx="1392" cy="296" r="1.6"/><circle cx="1182" cy="818" r="1.7"/><circle cx="1424" cy="756" r="1.5"/>
     <circle cx="1330" cy="422" r="1.6"/><circle cx="1096" cy="678" r="1.4"/><circle cx="238" cy="626" r="1.5"/>
+    <circle cx="520" cy="150" r="1.5"/><circle cx="840" cy="360" r="1.4"/><circle cx="470" cy="618" r="1.5"/>
+    <circle cx="958" cy="642" r="1.6"/><circle cx="1158" cy="242" r="1.4"/><circle cx="726" cy="470" r="1.3"/>
+    <circle cx="642" cy="232" r="1.4"/><circle cx="1082" cy="560" r="1.4"/><circle cx="410" cy="380" r="1.3"/>
   </g>
-  <g fill="rgba(245,168,60,.55)"><circle cx="1258" cy="500" r="2.4"/><circle cx="150" cy="196" r="2.2"/></g>
+  <g class="twinkles" fill="rgba(245,168,60,.55)"><circle cx="1258" cy="500" r="2.4"/><circle cx="150" cy="196" r="2.2"/><circle cx="815" cy="150" r="2"/></g>
+  <g class="shoot shoot-1">
+    <line x1="228" y1="150" x2="196" y2="136" stroke="rgba(120,140,205,.5)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="228" cy="150" r="1.9" fill="rgba(150,172,228,.95)"/>
+  </g>
+  <g class="shoot shoot-2">
+    <line x1="1006" y1="150" x2="974" y2="136" stroke="rgba(150,120,205,.46)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="1006" cy="150" r="1.8" fill="rgba(178,150,228,.95)"/>
+  </g>
+  <g class="shoot shoot-3">
+    <line x1="150" y1="250" x2="118" y2="236" stroke="rgba(120,140,205,.5)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="150" cy="250" r="1.8" fill="rgba(150,172,228,.95)"/>
+  </g>
+  <g class="shoot shoot-4">
+    <line x1="720" y1="110" x2="688" y2="96" stroke="rgba(150,120,205,.46)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="720" cy="110" r="1.8" fill="rgba(178,150,228,.95)"/>
+  </g>
+  <g class="shoot shoot-5">
+    <line x1="430" y1="470" x2="398" y2="456" stroke="rgba(120,140,205,.48)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="430" cy="470" r="1.7" fill="rgba(150,172,228,.95)"/>
+  </g>
+  <g class="shoot shoot-6">
+    <line x1="980" y1="560" x2="948" y2="546" stroke="rgba(150,120,205,.44)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="980" cy="560" r="1.7" fill="rgba(178,150,228,.95)"/>
+  </g>
 </svg>
 <div id="progress" aria-hidden="true"></div>
 
 <div class="wrap">
   <header class="head">
     <a class="brand" href="#top">Rasalhague</a>
-    <a class="nav-cta" href="#waitlist">Be the first to know</a>
   </header>
 
   <section class="hero" id="top">
@@ -310,7 +410,7 @@
         <g id="leader" stroke="#3B6FE0" stroke-width="1" stroke-opacity=".8">
           <line x1="474" y1="64" x2="600" y2="46" pathLength="1"/>
         </g>
-        <text id="alabel" x="610" y="51" letter-spacing="3">RAS ALHAGUE · α</text>
+        <text id="alabel" x="610" y="51" letter-spacing="3">RASALHAGUE · α</text>
         <g id="starz" fill="#7B93C9">
           <circle cx="360" cy="175" r="4"/><circle cx="575" cy="165" r="4.2"/><circle cx="250" cy="250" r="3.4"/>
           <circle cx="258" cy="300" r="3"/><circle cx="660" cy="235" r="3.4"/><circle cx="740" cy="305" r="3"/>
@@ -343,25 +443,25 @@
   </section>
 
   <div class="sections">
-    <section class="card reveal"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 4 5.5 6.8 5.5 9.5a5.5 5.5 0 1 1-11 0C6.5 9.8 8.5 7 12 3z"/></svg><p class="label">The Problem</p></div><div class="col-r"><h2>What actually happens when no one owns the issue</h2><p>A small problem can become serious fast. A tenant reports a leak with a photo and a short message, the way most housing issues are still raised today. No one replies. The message moves up the thread and disappears from view.</p><p>By the next evening, water has reached the wiring and is running from the power sockets. Six people are still living in the house, still paying rent, and still waiting for help.</p><p>This is not an extreme example. It is a common failure pattern, and I know because I lived inside it.</p><p>This is how UK shared housing too often works: a 650,000-property sector where urgent problems can disappear into informal messages and tenants are left chasing silence.</p></div></div></section>
+<section class="card reveal k1"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 4 5.5 6.8 5.5 9.5a5.5 5.5 0 1 1-11 0C6.5 9.8 8.5 7 12 3z"/></svg><p class="label">The Problem</p></div><div class="col-r"><h2>What actually happens when no one owns the issue</h2><p>A small problem can become serious fast. A tenant reports a leak with a photo and a short message, the way most housing issues are still raised today. No one replies. The message moves up the thread and disappears from view.</p><p>By the next evening, water has reached the wiring and is running from the power sockets. Six people are still living in the house, still paying rent, and still waiting for help.</p><p>This is not an extreme example. It is a common failure pattern, and I know because I lived inside it.</p><p>This is how UK shared housing too often works: a 650,000-property sector where urgent problems can disappear into informal messages and tenants are left chasing silence.</p></div></div></section>
 
-    <section class="card reveal c-violet"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.1"/><circle cx="4.5" cy="12" r="1.1"/><circle cx="4.5" cy="18" r="1.1"/></svg><p class="label">Lived Experience</p></div><div class="col-r"><h2>Different tenancies. The same failure pattern.</h2><p>I saw the same issues repeat across four shared properties in Newcastle, as well as stays with friends in Manchester and London. Whether the property was agency-managed, privately owned, or part of a landlord portfolio, the operating pattern rarely changed.</p><ol class="numbered"><li>Damp was blamed on tenants drying clothes indoors.</li><li>A leaking sewer flooded the backyard, yet the tenant was asked to arrange the repair.</li><li>Mould was blamed on a cat living in the home.</li><li>Faulty heating equipment left an old property dangerously overheated.</li><li>A tenant’s bedroom door was forced during an attempted break-in.</li><li>A heating system smelled like rotten eggs, leading to the fire service being called.</li><li>A broken fence was repeatedly patched with its own broken pieces.</li><li>Tenants were threatened with eviction, and belongings were removed from rooms without consent.</li><li>Severe mould and damp were covered with fresh paint or new carpet instead of being properly resolved.</li></ol></div></div></section>
+<section class="card reveal k2"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.1"/><circle cx="4.5" cy="12" r="1.1"/><circle cx="4.5" cy="18" r="1.1"/></svg><p class="label">Lived Experience</p></div><div class="col-r"><h2>Different tenancies. The same failure pattern.</h2><p>I saw the same issues repeat across four shared properties in Newcastle, as well as stays with friends in Manchester and London. Whether the property was agency-managed, privately owned, or part of a landlord portfolio, the operating pattern rarely changed.</p><ol class="numbered"><li>Damp was blamed on tenants drying clothes indoors.</li><li>A leaking sewer flooded the backyard, yet the tenant was asked to arrange the repair.</li><li>Mould was blamed on a cat living in the home.</li><li>Faulty heating equipment left an old property dangerously overheated.</li><li>A tenant’s bedroom door was forced during an attempted break-in.</li><li>A heating system smelled like rotten eggs, leading to the fire service being called.</li><li>A broken fence was repeatedly patched with its own broken pieces.</li><li>Tenants were threatened with eviction, and belongings were removed from rooms without consent.</li><li>Severe mould and damp were covered with fresh paint or new carpet instead of being properly resolved.</li></ol></div></div></section>
 
     <section class="band-light reveal"><p class="dquote">The buildings weren’t the only problem, the operating model was. No reliable reporting. No triage. No response timeline. No verified closure. No consequence for delay.</p></section>
 
-    <section class="card reveal c-teal"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><path d="M12 7.2V21"/><path d="M4 13H2.8a9.2 9.2 0 0 0 18.4 0H20"/><path d="M8.5 10.5h7"/></svg><p class="label">The Shift</p></div><div class="col-r"><h2>From maritime discipline to housing accountability</h2><p>Ships don’t run on goodwill. Homes shouldn’t either.</p><p>Before building Rasalhague, I served in the merchant navy as a Navigating Officer on oil tankers. That experience shaped how I think about safety, responsibility, and operational discipline.</p><p>Ships stay safe because their systems are clear, auditable, and difficult to ignore. Hazards are classified. Response times are defined. Actions are recorded. Nothing important depends on memory, mood, or goodwill.</p><p>Rasalhague applies that discipline to UK shared housing: every issue is structured, assigned, timed, recorded, and closed with evidence.</p></div></div></section>
+<section class="card reveal k3"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><path d="M12 7.2V21"/><path d="M4 13H2.8a9.2 9.2 0 0 0 18.4 0H20"/><path d="M8.5 10.5h7"/></svg><p class="label">The Shift</p></div><div class="col-r"><h2>From maritime discipline to housing accountability</h2><p>Ships don’t run on goodwill. Homes shouldn’t either.</p><p>Before building Rasalhague, I served in the merchant navy as a Navigating Officer on oil tankers. That experience shaped how I think about safety, responsibility, and operational discipline.</p><p>Ships stay safe because their systems are clear, auditable, and difficult to ignore. Hazards are classified. Response times are defined. Actions are recorded. Nothing important depends on memory, mood, or goodwill.</p><p>Rasalhague applies that discipline to UK shared housing: every issue is structured, assigned, timed, recorded, and closed with evidence.</p></div></div></section>
 
-    <section class="card reveal"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l8 4.5-8 4.5-8-4.5 8-4.5z"/><path d="M4 12.5l8 4.5 8-4.5"/><path d="M4 16.5l8 4.5 8-4.5"/></svg><p class="label">What It Is</p></div><div class="col-r"><h2>Not another admin tool. An operating layer for responsibility.</h2><p>Rasalhague is the operational governance layer for UK shared housing. It is built on one simple rule: every issue needs an owner, a timeframe, a record, and a verified close.</p><p>It brings landlords and tenants into the same workflow. Tenants can report issues, see them prioritised, follow the response, and confirm completion without being reduced to names on a file.</p><p>Structured reports replace scattered messages. Urgency is assessed, response windows are set, and the works log remains permanent and uneditable.</p><p>No lost chat threads. No vague promises. No mould blamed on the cats.</p></div></div></section>
+<section class="card reveal k4"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l8 4.5-8 4.5-8-4.5 8-4.5z"/><path d="M4 12.5l8 4.5 8-4.5"/><path d="M4 16.5l8 4.5 8-4.5"/></svg><p class="label">What It Is</p></div><div class="col-r"><h2>Not another admin tool. An operating layer for responsibility.</h2><p>Rasalhague is the operational governance layer for UK shared housing. It is built on one simple rule: every issue needs an owner, a timeframe, a record, and a verified close.</p><p>It brings landlords and tenants into the same workflow. Tenants can report issues, see them prioritised, follow the response, and confirm completion without being reduced to names on a file.</p><p>Structured reports replace scattered messages. Urgency is assessed, response windows are set, and the works log remains permanent and uneditable.</p><p>No lost chat threads. No vague promises. No mould blamed on the cats.</p></div></div></section>
 
-    <section class="card reveal c-violet"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h4.5v-4.5H12V11h4.5V6.5H21"/></svg><p class="label">How It Works</p></div><div class="col-r"><h2>Three clear steps. One accountable record.</h2><ol class="steps"><li><strong>Report the issue.</strong><p>Tenants raise repairs, hazards, and maintenance concerns through structured reports instead of informal messages that can be missed.</p></li><li><strong>Prioritise the response.</strong><p>Each issue is logged, ranked by urgency, and given a defined response timeframe. The process does not depend on mood, memory, or goodwill.</p></li><li><strong>Resolve and verify completion.</strong><p>Closure requires evidence, and every action remains part of a permanent works log that cannot be quietly changed later.</p></li></ol></div></div></section>
+<section class="card reveal k5"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h4.5v-4.5H12V11h4.5V6.5H21"/></svg><p class="label">How It Works</p></div><div class="col-r"><h2>Three clear steps. One accountable record.</h2><ol class="steps"><li><strong>Report the issue.</strong><p>Tenants raise repairs, hazards, and maintenance concerns through structured reports instead of informal messages that can be missed.</p></li><li><strong>Prioritise the response.</strong><p>Each issue is logged, ranked by urgency, and given a defined response timeframe. The process does not depend on mood, memory, or goodwill.</p></li><li><strong>Resolve and verify completion.</strong><p>Closure requires evidence, and every action remains part of a permanent works log that cannot be quietly changed later.</p></li></ol></div></div></section>
 
-    <section class="card reveal c-teal"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9.3 12l2 2 3.6-3.6"/></svg><p class="label">Built On Evidence</p></div><div class="col-r"><h2>Evidence-led. Standards-aligned. Designed for real-world housing.</h2><p>Rasalhague is not built on opinion. Its case is supported by peer-reviewed academic research into tenant experience and landlord operations, drawn from two independent UK university studies.</p><p>The platform is designed around current UK housing health and safety standards and aligned with the direction of private rented sector reform.</p><p>In settings where responsibility is institutionalised, such as student accommodation or regulated landlord housing, outcomes improve because issues are captured, assigned, monitored, and evidenced.</p><p>Most shared housing has never had an equivalent operating standard. That is the gap Rasalhague is built to close.</p></div></div></section>
+<section class="card reveal k6"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9.3 12l2 2 3.6-3.6"/></svg><p class="label">Built On Evidence</p></div><div class="col-r"><h2>Evidence-led. Standards-aligned. Designed for real-world housing.</h2><p>Rasalhague is not built on opinion. Its case is supported by peer-reviewed academic research into tenant experience and landlord operations, drawn from two independent UK university studies.</p><p>The platform is designed around current UK housing health and safety standards and aligned with the direction of private rented sector reform.</p><p>In settings where responsibility is institutionalised, such as student accommodation or regulated landlord housing, outcomes improve because issues are captured, assigned, monitored, and evidenced.</p><p>Most shared housing has never had an equivalent operating standard. That is the gap Rasalhague is built to close.</p></div></div></section>
 
-    <section class="card reveal"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15.5" r="3.8"/><path d="M10.8 12.7L20 3.5"/><path d="M16 4.5l3 3"/><path d="M13.5 7l2.5 2.5"/></svg><p class="label">Who It’s For</p></div><div class="col-r"><h2>For operators who want shared housing to run properly.</h2><ol class="numbered"><li>HMO landlords managing anything from a three-bed house share to a thirty-room portfolio.</li><li>Portfolio managers responsible for multiple shared properties and maintenance workflows.</li><li>Estate and management companies running shared living at scale and needing clearer operational control.</li></ol><p style="margin-top:16px;">Rasalhague is UK-only at launch and HMO-only at this stage. If you run shared housing and need clearer control over repairs, hazards, and maintenance, it is built for you.</p></div></div></section>
+<section class="card reveal k7"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15.5" r="3.8"/><path d="M10.8 12.7L20 3.5"/><path d="M16 4.5l3 3"/><path d="M13.5 7l2.5 2.5"/></svg><p class="label">Who It’s For</p></div><div class="col-r"><h2>For operators who want shared housing to run properly.</h2><ol class="numbered"><li>HMO landlords managing anything from a three-bed house share to a thirty-room portfolio.</li><li>Portfolio managers responsible for multiple shared properties and maintenance workflows.</li><li>Estate and management companies running shared living at scale and needing clearer operational control.</li></ol><p style="margin-top:16px;">Rasalhague is UK-only at launch and HMO-only at this stage. If you run shared housing and need clearer control over repairs, hazards, and maintenance, it is built for you.</p></div></div></section>
 
-    <section class="card reveal c-amber"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20.5c1.5-3.6 4-5.3 7-5.3s5.5 1.7 7 5.3"/></svg><p class="label">Founder</p></div><div class="col-r"><h2>Why I’m building this</h2><p>I’m Hitesh Siwach, founder of Rasalhague.</p><p>My background taught me that safety depends on clear systems: risks are classified, actions are recorded, and responsibility is visible.</p><p>When I came ashore, I spent more than two years living through the opposite: informal reporting, blurred responsibility, and tenants left to chase basic repairs.</p><p>I built Rasalhague because shared housing should not depend on who shouts loudest. It should depend on systems that make responsibility visible.</p></div></div></section>
+<section class="card reveal k8"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20.5c1.5-3.6 4-5.3 7-5.3s5.5 1.7 7 5.3"/></svg><p class="label">Founder</p></div><div class="col-r"><h2>Why I’m building this</h2><p>I’m Hitesh Siwach, founder of Rasalhague.</p><p>My background taught me that safety depends on clear systems: risks are classified, actions are recorded, and responsibility is visible.</p><p>When I came ashore, I spent more than two years living through the opposite: informal reporting, blurred responsibility, and tenants left to chase basic repairs.</p><p>I built Rasalhague because shared housing should not depend on who shouts loudest. It should depend on systems that make responsibility visible.</p></div></div></section>
 
-    <section class="card reveal c-violet"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9.2a3 3 0 1 1 4.6 2.6c-1 .7-1.6 1.3-1.6 2.4"/><circle cx="12" cy="17.8" r="1" fill="url(#icograd)" stroke="none"/></svg><p class="label">FAQ</p></div><div class="col-r"><h2>Questions worth answering.</h2><div class="faq"><details class="faq-item" open><summary class="faq-q"><span>When does Rasalhague launch?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Rasalhague is in development. Early updates will be shared as the platform moves toward launch.</p></div></details><details class="faq-item"><summary class="faq-q"><span>Who is it for?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Rasalhague is being built for UK HMO landlords, portfolio managers, and operators responsible for shared housing, repairs, hazards, and maintenance workflows.</p></div></details><details class="faq-item"><summary class="faq-q"><span>How is this different from property management software?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Most property tools focus on administration. Rasalhague is focused on operational responsibility: structured reporting, prioritised response, evidence-led closure, and a permanent works record.</p></div></details><details class="faq-item"><summary class="faq-q"><span>What will it cost?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Pricing is kept practical for landlords and operators managing HMOs. Get in touch for more details.</p></div></details><details class="faq-item"><summary class="faq-q"><span>How is my data handled?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Data handling is designed with privacy, security, and clear access control in mind. Full detail is in our <a href="/privacy.html">Privacy Policy</a>.</p></div></details></div></div></div></section>
+<section class="card reveal k9"><div class="card-in"><div class="col-l"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9.2a3 3 0 1 1 4.6 2.6c-1 .7-1.6 1.3-1.6 2.4"/><circle cx="12" cy="17.8" r="1" fill="url(#icograd)" stroke="none"/></svg><p class="label">FAQ</p></div><div class="col-r"><h2>Questions worth answering.</h2><div class="faq"><details class="faq-item" open><summary class="faq-q"><span>When does Rasalhague launch?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Rasalhague is in development. Early updates will be shared as the platform moves toward launch.</p></div></details><details class="faq-item"><summary class="faq-q"><span>Who is it for?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Rasalhague is being built for UK HMO landlords, portfolio managers, and operators responsible for shared housing, repairs, hazards, and maintenance workflows.</p></div></details><details class="faq-item"><summary class="faq-q"><span>How is this different from property management software?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Most property tools focus on administration. Rasalhague is focused on operational responsibility: structured reporting, prioritised response, evidence-led closure, and a permanent works record.</p></div></details><details class="faq-item"><summary class="faq-q"><span>What will it cost?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Pricing is kept practical for landlords and operators managing HMOs. Get in touch for more details.</p></div></details><details class="faq-item"><summary class="faq-q"><span>How is my data handled?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a-inner"><p>Data handling is designed with privacy, security, and clear access control in mind. Full detail is in our <a href="/privacy.html">Privacy Policy</a>.</p></div></details></div></div></div></section>
 
     <section class="band-dark reveal">
       <svg class="ctastars" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none">
