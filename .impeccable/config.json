@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "reason": "User approved Inter as neutral body face in Modern Editorial system",
+        "createdAt": "2026-07-07T03:30:59.114Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "reason": "User approved Space Grotesk as utility label face in Modern Editorial system",
+        "createdAt": "2026-07-07T03:30:59.179Z"
+      }
+    ]
+  }
+}
